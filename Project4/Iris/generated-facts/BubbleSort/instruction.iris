@@ -1,0 +1,479 @@
+instruction("MAIN",  1, "MOVE TEMP 21 BBSvTable").
+instruction("MAIN",  2, "MOVE TEMP 22 HALLOCATE 16").
+instruction("MAIN",  3, "HSTORE TEMP 21 0 TEMP 22").
+instruction("MAIN",  4, "MOVE TEMP 23 BBS_Start").
+instruction("MAIN",  5, "HSTORE TEMP 22 0 TEMP 23").
+instruction("MAIN",  6, "MOVE TEMP 24 BBS_Sort").
+instruction("MAIN",  7, "HSTORE TEMP 22 4 TEMP 24").
+instruction("MAIN",  8, "MOVE TEMP 25 BBS_Print").
+instruction("MAIN",  9, "HSTORE TEMP 22 8 TEMP 25").
+instruction("MAIN", 10, "MOVE TEMP 26 BBS_Init").
+instruction("MAIN", 11, "HSTORE TEMP 22 12 TEMP 26").
+instruction("MAIN", 12, "MOVE TEMP 27 HALLOCATE 12").
+instruction("MAIN", 13, "MOVE TEMP 28 BBSvTable").
+instruction("MAIN", 14, "HLOAD TEMP 29 TEMP 28 0").
+instruction("MAIN", 15, "MOVE TEMP 30 4").
+instruction("MAIN", 16, "L1     NOOP").
+instruction("MAIN", 17, "MOVE TEMP 31 12").
+instruction("MAIN", 18, "MOVE TEMP 32 LT TEMP 30 TEMP 31").
+instruction("MAIN", 19, "CJUMP TEMP 32 L2").
+instruction("MAIN", 20, "MOVE TEMP 33 PLUS TEMP 27 TEMP 30").
+instruction("MAIN", 21, "MOVE TEMP 34 0").
+instruction("MAIN", 22, "HSTORE TEMP 33 0 TEMP 34").
+instruction("MAIN", 23, "MOVE TEMP 30 PLUS TEMP 30 4").
+instruction("MAIN", 24, "JUMP L1").
+instruction("MAIN", 25, "L2     NOOP").
+instruction("MAIN", 26, "HSTORE TEMP 27 0 TEMP 29").
+instruction("MAIN", 27, "MOVE TEMP 35 TEMP 27").
+instruction("MAIN", 28, "HLOAD TEMP 36 TEMP 35 0").
+instruction("MAIN", 29, "HLOAD TEMP 37 TEMP 36 0").
+instruction("MAIN", 30, "MOVE TEMP 38 10").
+instruction("MAIN", 31, "MOVE TEMP 39 CALL TEMP 37( TEMP 35 TEMP 38 )").
+instruction("MAIN", 32, "PRINT TEMP 39").
+instruction("BBS_Start",  1, "MOVE TEMP 41 TEMP 0").
+instruction("BBS_Start",  2, "HLOAD TEMP 42 TEMP 41 0").
+instruction("BBS_Start",  3, "HLOAD TEMP 43 TEMP 42 12").
+instruction("BBS_Start",  4, "MOVE TEMP 44 CALL TEMP 43( TEMP 41 TEMP 1 )").
+instruction("BBS_Start",  5, "MOVE TEMP 40 TEMP 44").
+instruction("BBS_Start",  6, "MOVE TEMP 45 TEMP 0").
+instruction("BBS_Start",  7, "HLOAD TEMP 46 TEMP 45 0").
+instruction("BBS_Start",  8, "HLOAD TEMP 47 TEMP 46 8").
+instruction("BBS_Start",  9, "MOVE TEMP 48 CALL TEMP 47( TEMP 45 )").
+instruction("BBS_Start", 10, "MOVE TEMP 40 TEMP 48").
+instruction("BBS_Start", 11, "MOVE TEMP 49 99999").
+instruction("BBS_Start", 12, "PRINT TEMP 49").
+instruction("BBS_Start", 13, "MOVE TEMP 50 TEMP 0").
+instruction("BBS_Start", 14, "HLOAD TEMP 51 TEMP 50 0").
+instruction("BBS_Start", 15, "HLOAD TEMP 52 TEMP 51 4").
+instruction("BBS_Start", 16, "MOVE TEMP 53 CALL TEMP 52( TEMP 50 )").
+instruction("BBS_Start", 17, "MOVE TEMP 40 TEMP 53").
+instruction("BBS_Start", 18, "MOVE TEMP 54 TEMP 0").
+instruction("BBS_Start", 19, "HLOAD TEMP 55 TEMP 54 0").
+instruction("BBS_Start", 20, "HLOAD TEMP 56 TEMP 55 8").
+instruction("BBS_Start", 21, "MOVE TEMP 57 CALL TEMP 56( TEMP 54 )").
+instruction("BBS_Start", 22, "MOVE TEMP 40 TEMP 57").
+instruction("BBS_Start", 23, "MOVE TEMP 58 0").
+instruction("BBS_Start", 24, "RETURN TEMP 58").
+instruction("BBS_Sort",  1, "HLOAD TEMP 60 TEMP 0 8").
+instruction("BBS_Sort",  2, "MOVE TEMP 61 1").
+instruction("BBS_Sort",  3, "MOVE TEMP 62 MINUS TEMP 60 TEMP 61").
+instruction("BBS_Sort",  4, "MOVE TEMP 59 TEMP 62").
+instruction("BBS_Sort",  5, "MOVE TEMP 64 0").
+instruction("BBS_Sort",  6, "MOVE TEMP 65 1").
+instruction("BBS_Sort",  7, "MOVE TEMP 66 MINUS TEMP 64 TEMP 65").
+instruction("BBS_Sort",  8, "MOVE TEMP 63 TEMP 66").
+instruction("BBS_Sort",  9, "L3     NOOP").
+instruction("BBS_Sort", 10, "MOVE TEMP 67 LT TEMP 63 TEMP 59").
+instruction("BBS_Sort", 11, "CJUMP TEMP 67 L4").
+instruction("BBS_Sort", 12, "MOVE TEMP 69 1").
+instruction("BBS_Sort", 13, "MOVE TEMP 68 TEMP 69").
+instruction("BBS_Sort", 14, "L5     NOOP").
+instruction("BBS_Sort", 15, "MOVE TEMP 70 1").
+instruction("BBS_Sort", 16, "MOVE TEMP 71 PLUS TEMP 59 TEMP 70").
+instruction("BBS_Sort", 17, "MOVE TEMP 72 LT TEMP 68 TEMP 71").
+instruction("BBS_Sort", 18, "CJUMP TEMP 72 L6").
+instruction("BBS_Sort", 19, "MOVE TEMP 74 1").
+instruction("BBS_Sort", 20, "MOVE TEMP 75 MINUS TEMP 68 TEMP 74").
+instruction("BBS_Sort", 21, "MOVE TEMP 73 TEMP 75").
+instruction("BBS_Sort", 22, "HLOAD TEMP 77 TEMP 0 4").
+instruction("BBS_Sort", 23, "MOVE TEMP 78 TEMP 77").
+instruction("BBS_Sort", 24, "MOVE TEMP 79 TEMP 73").
+instruction("BBS_Sort", 25, "MOVE TEMP 80 LT TEMP 79 0").
+instruction("BBS_Sort", 26, "CJUMP TEMP 80 L7").
+instruction("BBS_Sort", 27, "ERROR").
+instruction("BBS_Sort", 28, "L7     NOOP").
+instruction("BBS_Sort", 29, "HLOAD TEMP 81 TEMP 78 0").
+instruction("BBS_Sort", 30, "MOVE TEMP 82 1").
+instruction("BBS_Sort", 31, "MOVE TEMP 83 LT TEMP 79 TEMP 81").
+instruction("BBS_Sort", 32, "MOVE TEMP 84 MINUS TEMP 82 TEMP 83").
+instruction("BBS_Sort", 33, "CJUMP TEMP 84 L8").
+instruction("BBS_Sort", 34, "ERROR").
+instruction("BBS_Sort", 35, "L8     NOOP").
+instruction("BBS_Sort", 36, "MOVE TEMP 85 TIMES TEMP 79 4").
+instruction("BBS_Sort", 37, "MOVE TEMP 86 PLUS TEMP 85 4").
+instruction("BBS_Sort", 38, "MOVE TEMP 87 PLUS TEMP 78 TEMP 86").
+instruction("BBS_Sort", 39, "HLOAD TEMP 88 TEMP 87 0").
+instruction("BBS_Sort", 40, "MOVE TEMP 76 TEMP 88").
+instruction("BBS_Sort", 41, "HLOAD TEMP 90 TEMP 0 4").
+instruction("BBS_Sort", 42, "MOVE TEMP 91 TEMP 90").
+instruction("BBS_Sort", 43, "MOVE TEMP 92 TEMP 68").
+instruction("BBS_Sort", 44, "MOVE TEMP 93 LT TEMP 92 0").
+instruction("BBS_Sort", 45, "CJUMP TEMP 93 L9").
+instruction("BBS_Sort", 46, "ERROR").
+instruction("BBS_Sort", 47, "L9     NOOP").
+instruction("BBS_Sort", 48, "HLOAD TEMP 94 TEMP 91 0").
+instruction("BBS_Sort", 49, "MOVE TEMP 95 1").
+instruction("BBS_Sort", 50, "MOVE TEMP 96 LT TEMP 92 TEMP 94").
+instruction("BBS_Sort", 51, "MOVE TEMP 97 MINUS TEMP 95 TEMP 96").
+instruction("BBS_Sort", 52, "CJUMP TEMP 97 L10").
+instruction("BBS_Sort", 53, "ERROR").
+instruction("BBS_Sort", 54, "L10     NOOP").
+instruction("BBS_Sort", 55, "MOVE TEMP 98 TIMES TEMP 92 4").
+instruction("BBS_Sort", 56, "MOVE TEMP 99 PLUS TEMP 98 4").
+instruction("BBS_Sort", 57, "MOVE TEMP 100 PLUS TEMP 91 TEMP 99").
+instruction("BBS_Sort", 58, "HLOAD TEMP 101 TEMP 100 0").
+instruction("BBS_Sort", 59, "MOVE TEMP 89 TEMP 101").
+instruction("BBS_Sort", 60, "MOVE TEMP 102 LT TEMP 89 TEMP 76").
+instruction("BBS_Sort", 61, "CJUMP TEMP 102 L11").
+instruction("BBS_Sort", 62, "MOVE TEMP 104 1").
+instruction("BBS_Sort", 63, "MOVE TEMP 105 MINUS TEMP 68 TEMP 104").
+instruction("BBS_Sort", 64, "MOVE TEMP 103 TEMP 105").
+instruction("BBS_Sort", 65, "HLOAD TEMP 107 TEMP 0 4").
+instruction("BBS_Sort", 66, "MOVE TEMP 108 TEMP 107").
+instruction("BBS_Sort", 67, "MOVE TEMP 109 TEMP 103").
+instruction("BBS_Sort", 68, "MOVE TEMP 110 LT TEMP 109 0").
+instruction("BBS_Sort", 69, "CJUMP TEMP 110 L13").
+instruction("BBS_Sort", 70, "ERROR").
+instruction("BBS_Sort", 71, "L13     NOOP").
+instruction("BBS_Sort", 72, "HLOAD TEMP 111 TEMP 108 0").
+instruction("BBS_Sort", 73, "MOVE TEMP 112 1").
+instruction("BBS_Sort", 74, "MOVE TEMP 113 LT TEMP 109 TEMP 111").
+instruction("BBS_Sort", 75, "MOVE TEMP 114 MINUS TEMP 112 TEMP 113").
+instruction("BBS_Sort", 76, "CJUMP TEMP 114 L14").
+instruction("BBS_Sort", 77, "ERROR").
+instruction("BBS_Sort", 78, "L14     NOOP").
+instruction("BBS_Sort", 79, "MOVE TEMP 115 TIMES TEMP 109 4").
+instruction("BBS_Sort", 80, "MOVE TEMP 116 PLUS TEMP 115 4").
+instruction("BBS_Sort", 81, "MOVE TEMP 117 PLUS TEMP 108 TEMP 116").
+instruction("BBS_Sort", 82, "HLOAD TEMP 118 TEMP 117 0").
+instruction("BBS_Sort", 83, "MOVE TEMP 106 TEMP 118").
+instruction("BBS_Sort", 84, "HLOAD TEMP 119 TEMP 0 4").
+instruction("BBS_Sort", 85, "MOVE TEMP 120 TEMP 119").
+instruction("BBS_Sort", 86, "MOVE TEMP 121 TEMP 103").
+instruction("BBS_Sort", 87, "MOVE TEMP 122 LT TEMP 121 0").
+instruction("BBS_Sort", 88, "CJUMP TEMP 122 L15").
+instruction("BBS_Sort", 89, "ERROR").
+instruction("BBS_Sort", 90, "L15     NOOP").
+instruction("BBS_Sort", 91, "HLOAD TEMP 123 TEMP 120 0").
+instruction("BBS_Sort", 92, "MOVE TEMP 124 1").
+instruction("BBS_Sort", 93, "MOVE TEMP 125 LT TEMP 121 TEMP 123").
+instruction("BBS_Sort", 94, "MOVE TEMP 126 MINUS TEMP 124 TEMP 125").
+instruction("BBS_Sort", 95, "CJUMP TEMP 126 L16").
+instruction("BBS_Sort", 96, "ERROR").
+instruction("BBS_Sort", 97, "L16     NOOP").
+instruction("BBS_Sort", 98, "MOVE TEMP 127 TIMES TEMP 121 4").
+instruction("BBS_Sort", 99, "MOVE TEMP 128 PLUS TEMP 127 4").
+instruction("BBS_Sort", 100, "MOVE TEMP 129 PLUS TEMP 120 TEMP 128").
+instruction("BBS_Sort", 101, "HLOAD TEMP 130 TEMP 0 4").
+instruction("BBS_Sort", 102, "MOVE TEMP 131 TEMP 130").
+instruction("BBS_Sort", 103, "MOVE TEMP 132 TEMP 68").
+instruction("BBS_Sort", 104, "MOVE TEMP 133 LT TEMP 132 0").
+instruction("BBS_Sort", 105, "CJUMP TEMP 133 L17").
+instruction("BBS_Sort", 106, "ERROR").
+instruction("BBS_Sort", 107, "L17     NOOP").
+instruction("BBS_Sort", 108, "HLOAD TEMP 134 TEMP 131 0").
+instruction("BBS_Sort", 109, "MOVE TEMP 135 1").
+instruction("BBS_Sort", 110, "MOVE TEMP 136 LT TEMP 132 TEMP 134").
+instruction("BBS_Sort", 111, "MOVE TEMP 137 MINUS TEMP 135 TEMP 136").
+instruction("BBS_Sort", 112, "CJUMP TEMP 137 L18").
+instruction("BBS_Sort", 113, "ERROR").
+instruction("BBS_Sort", 114, "L18     NOOP").
+instruction("BBS_Sort", 115, "MOVE TEMP 138 TIMES TEMP 132 4").
+instruction("BBS_Sort", 116, "MOVE TEMP 139 PLUS TEMP 138 4").
+instruction("BBS_Sort", 117, "MOVE TEMP 140 PLUS TEMP 131 TEMP 139").
+instruction("BBS_Sort", 118, "HLOAD TEMP 141 TEMP 140 0").
+instruction("BBS_Sort", 119, "MOVE TEMP 142 TEMP 141").
+instruction("BBS_Sort", 120, "HSTORE TEMP 129 0 TEMP 142").
+instruction("BBS_Sort", 121, "HLOAD TEMP 143 TEMP 0 4").
+instruction("BBS_Sort", 122, "MOVE TEMP 144 TEMP 143").
+instruction("BBS_Sort", 123, "MOVE TEMP 145 TEMP 68").
+instruction("BBS_Sort", 124, "MOVE TEMP 146 LT TEMP 145 0").
+instruction("BBS_Sort", 125, "CJUMP TEMP 146 L19").
+instruction("BBS_Sort", 126, "ERROR").
+instruction("BBS_Sort", 127, "L19     NOOP").
+instruction("BBS_Sort", 128, "HLOAD TEMP 147 TEMP 144 0").
+instruction("BBS_Sort", 129, "MOVE TEMP 148 1").
+instruction("BBS_Sort", 130, "MOVE TEMP 149 LT TEMP 145 TEMP 147").
+instruction("BBS_Sort", 131, "MOVE TEMP 150 MINUS TEMP 148 TEMP 149").
+instruction("BBS_Sort", 132, "CJUMP TEMP 150 L20").
+instruction("BBS_Sort", 133, "ERROR").
+instruction("BBS_Sort", 134, "L20     NOOP").
+instruction("BBS_Sort", 135, "MOVE TEMP 151 TIMES TEMP 145 4").
+instruction("BBS_Sort", 136, "MOVE TEMP 152 PLUS TEMP 151 4").
+instruction("BBS_Sort", 137, "MOVE TEMP 153 PLUS TEMP 144 TEMP 152").
+instruction("BBS_Sort", 138, "MOVE TEMP 154 TEMP 106").
+instruction("BBS_Sort", 139, "HSTORE TEMP 153 0 TEMP 154").
+instruction("BBS_Sort", 140, "JUMP L12").
+instruction("BBS_Sort", 141, "L11     NOOP").
+instruction("BBS_Sort", 142, "MOVE TEMP 156 0").
+instruction("BBS_Sort", 143, "MOVE TEMP 155 TEMP 156").
+instruction("BBS_Sort", 144, "L12     NOOP").
+instruction("BBS_Sort", 145, "MOVE TEMP 157 1").
+instruction("BBS_Sort", 146, "MOVE TEMP 158 PLUS TEMP 68 TEMP 157").
+instruction("BBS_Sort", 147, "MOVE TEMP 68 TEMP 158").
+instruction("BBS_Sort", 148, "JUMP L5").
+instruction("BBS_Sort", 149, "L6     NOOP").
+instruction("BBS_Sort", 150, "MOVE TEMP 159 1").
+instruction("BBS_Sort", 151, "MOVE TEMP 160 MINUS TEMP 59 TEMP 159").
+instruction("BBS_Sort", 152, "MOVE TEMP 59 TEMP 160").
+instruction("BBS_Sort", 153, "JUMP L3").
+instruction("BBS_Sort", 154, "L4     NOOP").
+instruction("BBS_Sort", 155, "MOVE TEMP 161 0").
+instruction("BBS_Sort", 156, "RETURN TEMP 161").
+instruction("BBS_Print",  1, "MOVE TEMP 163 0").
+instruction("BBS_Print",  2, "MOVE TEMP 162 TEMP 163").
+instruction("BBS_Print",  3, "L21     NOOP").
+instruction("BBS_Print",  4, "HLOAD TEMP 164 TEMP 0 8").
+instruction("BBS_Print",  5, "MOVE TEMP 165 LT TEMP 162 TEMP 164").
+instruction("BBS_Print",  6, "CJUMP TEMP 165 L22").
+instruction("BBS_Print",  7, "HLOAD TEMP 166 TEMP 0 4").
+instruction("BBS_Print",  8, "MOVE TEMP 167 TEMP 166").
+instruction("BBS_Print",  9, "MOVE TEMP 168 TEMP 162").
+instruction("BBS_Print", 10, "MOVE TEMP 169 LT TEMP 168 0").
+instruction("BBS_Print", 11, "CJUMP TEMP 169 L23").
+instruction("BBS_Print", 12, "ERROR").
+instruction("BBS_Print", 13, "L23     NOOP").
+instruction("BBS_Print", 14, "HLOAD TEMP 170 TEMP 167 0").
+instruction("BBS_Print", 15, "MOVE TEMP 171 1").
+instruction("BBS_Print", 16, "MOVE TEMP 172 LT TEMP 168 TEMP 170").
+instruction("BBS_Print", 17, "MOVE TEMP 173 MINUS TEMP 171 TEMP 172").
+instruction("BBS_Print", 18, "CJUMP TEMP 173 L24").
+instruction("BBS_Print", 19, "ERROR").
+instruction("BBS_Print", 20, "L24     NOOP").
+instruction("BBS_Print", 21, "MOVE TEMP 174 TIMES TEMP 168 4").
+instruction("BBS_Print", 22, "MOVE TEMP 175 PLUS TEMP 174 4").
+instruction("BBS_Print", 23, "MOVE TEMP 176 PLUS TEMP 167 TEMP 175").
+instruction("BBS_Print", 24, "HLOAD TEMP 177 TEMP 176 0").
+instruction("BBS_Print", 25, "PRINT TEMP 177").
+instruction("BBS_Print", 26, "MOVE TEMP 178 1").
+instruction("BBS_Print", 27, "MOVE TEMP 179 PLUS TEMP 162 TEMP 178").
+instruction("BBS_Print", 28, "MOVE TEMP 162 TEMP 179").
+instruction("BBS_Print", 29, "JUMP L21").
+instruction("BBS_Print", 30, "L22     NOOP").
+instruction("BBS_Print", 31, "MOVE TEMP 180 0").
+instruction("BBS_Print", 32, "RETURN TEMP 180").
+instruction("BBS_Init",  1, "MOVE TEMP 181 PLUS TEMP 0 8").
+instruction("BBS_Init",  2, "HSTORE TEMP 181 0 TEMP 1").
+instruction("BBS_Init",  3, "MOVE TEMP 182 PLUS TEMP 0 4").
+instruction("BBS_Init",  4, "MOVE TEMP 183 TEMP 1").
+instruction("BBS_Init",  5, "MOVE TEMP 184 LT TEMP 183 0").
+instruction("BBS_Init",  6, "CJUMP TEMP 184 L25").
+instruction("BBS_Init",  7, "ERROR").
+instruction("BBS_Init",  8, "L25     NOOP").
+instruction("BBS_Init",  9, "MOVE TEMP 185 PLUS TEMP 183 1").
+instruction("BBS_Init", 10, "MOVE TEMP 186 TIMES TEMP 185 4").
+instruction("BBS_Init", 11, "MOVE TEMP 187 HALLOCATE TEMP 186").
+instruction("BBS_Init", 12, "MOVE TEMP 188 0").
+instruction("BBS_Init", 13, "MOVE TEMP 189 4").
+instruction("BBS_Init", 14, "L26     NOOP").
+instruction("BBS_Init", 15, "MOVE TEMP 190 LT TEMP 189 TEMP 186").
+instruction("BBS_Init", 16, "CJUMP TEMP 190 L27").
+instruction("BBS_Init", 17, "MOVE TEMP 191 PLUS TEMP 187 TEMP 189").
+instruction("BBS_Init", 18, "HSTORE TEMP 191 0 TEMP 188").
+instruction("BBS_Init", 19, "MOVE TEMP 189 PLUS TEMP 189 4").
+instruction("BBS_Init", 20, "JUMP L26").
+instruction("BBS_Init", 21, "L27     NOOP").
+instruction("BBS_Init", 22, "HSTORE TEMP 187 0 TEMP 183").
+instruction("BBS_Init", 23, "HSTORE TEMP 182 0 TEMP 187").
+instruction("BBS_Init", 24, "HLOAD TEMP 192 TEMP 0 4").
+instruction("BBS_Init", 25, "MOVE TEMP 193 TEMP 192").
+instruction("BBS_Init", 26, "MOVE TEMP 194 0").
+instruction("BBS_Init", 27, "MOVE TEMP 195 TEMP 194").
+instruction("BBS_Init", 28, "MOVE TEMP 196 LT TEMP 195 0").
+instruction("BBS_Init", 29, "CJUMP TEMP 196 L28").
+instruction("BBS_Init", 30, "ERROR").
+instruction("BBS_Init", 31, "L28     NOOP").
+instruction("BBS_Init", 32, "HLOAD TEMP 197 TEMP 193 0").
+instruction("BBS_Init", 33, "MOVE TEMP 198 1").
+instruction("BBS_Init", 34, "MOVE TEMP 199 LT TEMP 195 TEMP 197").
+instruction("BBS_Init", 35, "MOVE TEMP 200 MINUS TEMP 198 TEMP 199").
+instruction("BBS_Init", 36, "CJUMP TEMP 200 L29").
+instruction("BBS_Init", 37, "ERROR").
+instruction("BBS_Init", 38, "L29     NOOP").
+instruction("BBS_Init", 39, "MOVE TEMP 201 TIMES TEMP 195 4").
+instruction("BBS_Init", 40, "MOVE TEMP 202 PLUS TEMP 201 4").
+instruction("BBS_Init", 41, "MOVE TEMP 203 PLUS TEMP 193 TEMP 202").
+instruction("BBS_Init", 42, "MOVE TEMP 204 20").
+instruction("BBS_Init", 43, "MOVE TEMP 205 TEMP 204").
+instruction("BBS_Init", 44, "HSTORE TEMP 203 0 TEMP 205").
+instruction("BBS_Init", 45, "HLOAD TEMP 206 TEMP 0 4").
+instruction("BBS_Init", 46, "MOVE TEMP 207 TEMP 206").
+instruction("BBS_Init", 47, "MOVE TEMP 208 1").
+instruction("BBS_Init", 48, "MOVE TEMP 209 TEMP 208").
+instruction("BBS_Init", 49, "MOVE TEMP 210 LT TEMP 209 0").
+instruction("BBS_Init", 50, "CJUMP TEMP 210 L30").
+instruction("BBS_Init", 51, "ERROR").
+instruction("BBS_Init", 52, "L30     NOOP").
+instruction("BBS_Init", 53, "HLOAD TEMP 211 TEMP 207 0").
+instruction("BBS_Init", 54, "MOVE TEMP 212 1").
+instruction("BBS_Init", 55, "MOVE TEMP 213 LT TEMP 209 TEMP 211").
+instruction("BBS_Init", 56, "MOVE TEMP 214 MINUS TEMP 212 TEMP 213").
+instruction("BBS_Init", 57, "CJUMP TEMP 214 L31").
+instruction("BBS_Init", 58, "ERROR").
+instruction("BBS_Init", 59, "L31     NOOP").
+instruction("BBS_Init", 60, "MOVE TEMP 215 TIMES TEMP 209 4").
+instruction("BBS_Init", 61, "MOVE TEMP 216 PLUS TEMP 215 4").
+instruction("BBS_Init", 62, "MOVE TEMP 217 PLUS TEMP 207 TEMP 216").
+instruction("BBS_Init", 63, "MOVE TEMP 218 7").
+instruction("BBS_Init", 64, "MOVE TEMP 219 TEMP 218").
+instruction("BBS_Init", 65, "HSTORE TEMP 217 0 TEMP 219").
+instruction("BBS_Init", 66, "HLOAD TEMP 220 TEMP 0 4").
+instruction("BBS_Init", 67, "MOVE TEMP 221 TEMP 220").
+instruction("BBS_Init", 68, "MOVE TEMP 222 2").
+instruction("BBS_Init", 69, "MOVE TEMP 223 TEMP 222").
+instruction("BBS_Init", 70, "MOVE TEMP 224 LT TEMP 223 0").
+instruction("BBS_Init", 71, "CJUMP TEMP 224 L32").
+instruction("BBS_Init", 72, "ERROR").
+instruction("BBS_Init", 73, "L32     NOOP").
+instruction("BBS_Init", 74, "HLOAD TEMP 225 TEMP 221 0").
+instruction("BBS_Init", 75, "MOVE TEMP 226 1").
+instruction("BBS_Init", 76, "MOVE TEMP 227 LT TEMP 223 TEMP 225").
+instruction("BBS_Init", 77, "MOVE TEMP 228 MINUS TEMP 226 TEMP 227").
+instruction("BBS_Init", 78, "CJUMP TEMP 228 L33").
+instruction("BBS_Init", 79, "ERROR").
+instruction("BBS_Init", 80, "L33     NOOP").
+instruction("BBS_Init", 81, "MOVE TEMP 229 TIMES TEMP 223 4").
+instruction("BBS_Init", 82, "MOVE TEMP 230 PLUS TEMP 229 4").
+instruction("BBS_Init", 83, "MOVE TEMP 231 PLUS TEMP 221 TEMP 230").
+instruction("BBS_Init", 84, "MOVE TEMP 232 12").
+instruction("BBS_Init", 85, "MOVE TEMP 233 TEMP 232").
+instruction("BBS_Init", 86, "HSTORE TEMP 231 0 TEMP 233").
+instruction("BBS_Init", 87, "HLOAD TEMP 234 TEMP 0 4").
+instruction("BBS_Init", 88, "MOVE TEMP 235 TEMP 234").
+instruction("BBS_Init", 89, "MOVE TEMP 236 3").
+instruction("BBS_Init", 90, "MOVE TEMP 237 TEMP 236").
+instruction("BBS_Init", 91, "MOVE TEMP 238 LT TEMP 237 0").
+instruction("BBS_Init", 92, "CJUMP TEMP 238 L34").
+instruction("BBS_Init", 93, "ERROR").
+instruction("BBS_Init", 94, "L34     NOOP").
+instruction("BBS_Init", 95, "HLOAD TEMP 239 TEMP 235 0").
+instruction("BBS_Init", 96, "MOVE TEMP 240 1").
+instruction("BBS_Init", 97, "MOVE TEMP 241 LT TEMP 237 TEMP 239").
+instruction("BBS_Init", 98, "MOVE TEMP 242 MINUS TEMP 240 TEMP 241").
+instruction("BBS_Init", 99, "CJUMP TEMP 242 L35").
+instruction("BBS_Init", 100, "ERROR").
+instruction("BBS_Init", 101, "L35     NOOP").
+instruction("BBS_Init", 102, "MOVE TEMP 243 TIMES TEMP 237 4").
+instruction("BBS_Init", 103, "MOVE TEMP 244 PLUS TEMP 243 4").
+instruction("BBS_Init", 104, "MOVE TEMP 245 PLUS TEMP 235 TEMP 244").
+instruction("BBS_Init", 105, "MOVE TEMP 246 18").
+instruction("BBS_Init", 106, "MOVE TEMP 247 TEMP 246").
+instruction("BBS_Init", 107, "HSTORE TEMP 245 0 TEMP 247").
+instruction("BBS_Init", 108, "HLOAD TEMP 248 TEMP 0 4").
+instruction("BBS_Init", 109, "MOVE TEMP 249 TEMP 248").
+instruction("BBS_Init", 110, "MOVE TEMP 250 4").
+instruction("BBS_Init", 111, "MOVE TEMP 251 TEMP 250").
+instruction("BBS_Init", 112, "MOVE TEMP 252 LT TEMP 251 0").
+instruction("BBS_Init", 113, "CJUMP TEMP 252 L36").
+instruction("BBS_Init", 114, "ERROR").
+instruction("BBS_Init", 115, "L36     NOOP").
+instruction("BBS_Init", 116, "HLOAD TEMP 253 TEMP 249 0").
+instruction("BBS_Init", 117, "MOVE TEMP 254 1").
+instruction("BBS_Init", 118, "MOVE TEMP 255 LT TEMP 251 TEMP 253").
+instruction("BBS_Init", 119, "MOVE TEMP 256 MINUS TEMP 254 TEMP 255").
+instruction("BBS_Init", 120, "CJUMP TEMP 256 L37").
+instruction("BBS_Init", 121, "ERROR").
+instruction("BBS_Init", 122, "L37     NOOP").
+instruction("BBS_Init", 123, "MOVE TEMP 257 TIMES TEMP 251 4").
+instruction("BBS_Init", 124, "MOVE TEMP 258 PLUS TEMP 257 4").
+instruction("BBS_Init", 125, "MOVE TEMP 259 PLUS TEMP 249 TEMP 258").
+instruction("BBS_Init", 126, "MOVE TEMP 260 2").
+instruction("BBS_Init", 127, "MOVE TEMP 261 TEMP 260").
+instruction("BBS_Init", 128, "HSTORE TEMP 259 0 TEMP 261").
+instruction("BBS_Init", 129, "HLOAD TEMP 262 TEMP 0 4").
+instruction("BBS_Init", 130, "MOVE TEMP 263 TEMP 262").
+instruction("BBS_Init", 131, "MOVE TEMP 264 5").
+instruction("BBS_Init", 132, "MOVE TEMP 265 TEMP 264").
+instruction("BBS_Init", 133, "MOVE TEMP 266 LT TEMP 265 0").
+instruction("BBS_Init", 134, "CJUMP TEMP 266 L38").
+instruction("BBS_Init", 135, "ERROR").
+instruction("BBS_Init", 136, "L38     NOOP").
+instruction("BBS_Init", 137, "HLOAD TEMP 267 TEMP 263 0").
+instruction("BBS_Init", 138, "MOVE TEMP 268 1").
+instruction("BBS_Init", 139, "MOVE TEMP 269 LT TEMP 265 TEMP 267").
+instruction("BBS_Init", 140, "MOVE TEMP 270 MINUS TEMP 268 TEMP 269").
+instruction("BBS_Init", 141, "CJUMP TEMP 270 L39").
+instruction("BBS_Init", 142, "ERROR").
+instruction("BBS_Init", 143, "L39     NOOP").
+instruction("BBS_Init", 144, "MOVE TEMP 271 TIMES TEMP 265 4").
+instruction("BBS_Init", 145, "MOVE TEMP 272 PLUS TEMP 271 4").
+instruction("BBS_Init", 146, "MOVE TEMP 273 PLUS TEMP 263 TEMP 272").
+instruction("BBS_Init", 147, "MOVE TEMP 274 11").
+instruction("BBS_Init", 148, "MOVE TEMP 275 TEMP 274").
+instruction("BBS_Init", 149, "HSTORE TEMP 273 0 TEMP 275").
+instruction("BBS_Init", 150, "HLOAD TEMP 276 TEMP 0 4").
+instruction("BBS_Init", 151, "MOVE TEMP 277 TEMP 276").
+instruction("BBS_Init", 152, "MOVE TEMP 278 6").
+instruction("BBS_Init", 153, "MOVE TEMP 279 TEMP 278").
+instruction("BBS_Init", 154, "MOVE TEMP 280 LT TEMP 279 0").
+instruction("BBS_Init", 155, "CJUMP TEMP 280 L40").
+instruction("BBS_Init", 156, "ERROR").
+instruction("BBS_Init", 157, "L40     NOOP").
+instruction("BBS_Init", 158, "HLOAD TEMP 281 TEMP 277 0").
+instruction("BBS_Init", 159, "MOVE TEMP 282 1").
+instruction("BBS_Init", 160, "MOVE TEMP 283 LT TEMP 279 TEMP 281").
+instruction("BBS_Init", 161, "MOVE TEMP 284 MINUS TEMP 282 TEMP 283").
+instruction("BBS_Init", 162, "CJUMP TEMP 284 L41").
+instruction("BBS_Init", 163, "ERROR").
+instruction("BBS_Init", 164, "L41     NOOP").
+instruction("BBS_Init", 165, "MOVE TEMP 285 TIMES TEMP 279 4").
+instruction("BBS_Init", 166, "MOVE TEMP 286 PLUS TEMP 285 4").
+instruction("BBS_Init", 167, "MOVE TEMP 287 PLUS TEMP 277 TEMP 286").
+instruction("BBS_Init", 168, "MOVE TEMP 288 6").
+instruction("BBS_Init", 169, "MOVE TEMP 289 TEMP 288").
+instruction("BBS_Init", 170, "HSTORE TEMP 287 0 TEMP 289").
+instruction("BBS_Init", 171, "HLOAD TEMP 290 TEMP 0 4").
+instruction("BBS_Init", 172, "MOVE TEMP 291 TEMP 290").
+instruction("BBS_Init", 173, "MOVE TEMP 292 7").
+instruction("BBS_Init", 174, "MOVE TEMP 293 TEMP 292").
+instruction("BBS_Init", 175, "MOVE TEMP 294 LT TEMP 293 0").
+instruction("BBS_Init", 176, "CJUMP TEMP 294 L42").
+instruction("BBS_Init", 177, "ERROR").
+instruction("BBS_Init", 178, "L42     NOOP").
+instruction("BBS_Init", 179, "HLOAD TEMP 295 TEMP 291 0").
+instruction("BBS_Init", 180, "MOVE TEMP 296 1").
+instruction("BBS_Init", 181, "MOVE TEMP 297 LT TEMP 293 TEMP 295").
+instruction("BBS_Init", 182, "MOVE TEMP 298 MINUS TEMP 296 TEMP 297").
+instruction("BBS_Init", 183, "CJUMP TEMP 298 L43").
+instruction("BBS_Init", 184, "ERROR").
+instruction("BBS_Init", 185, "L43     NOOP").
+instruction("BBS_Init", 186, "MOVE TEMP 299 TIMES TEMP 293 4").
+instruction("BBS_Init", 187, "MOVE TEMP 300 PLUS TEMP 299 4").
+instruction("BBS_Init", 188, "MOVE TEMP 301 PLUS TEMP 291 TEMP 300").
+instruction("BBS_Init", 189, "MOVE TEMP 302 9").
+instruction("BBS_Init", 190, "MOVE TEMP 303 TEMP 302").
+instruction("BBS_Init", 191, "HSTORE TEMP 301 0 TEMP 303").
+instruction("BBS_Init", 192, "HLOAD TEMP 304 TEMP 0 4").
+instruction("BBS_Init", 193, "MOVE TEMP 305 TEMP 304").
+instruction("BBS_Init", 194, "MOVE TEMP 306 8").
+instruction("BBS_Init", 195, "MOVE TEMP 307 TEMP 306").
+instruction("BBS_Init", 196, "MOVE TEMP 308 LT TEMP 307 0").
+instruction("BBS_Init", 197, "CJUMP TEMP 308 L44").
+instruction("BBS_Init", 198, "ERROR").
+instruction("BBS_Init", 199, "L44     NOOP").
+instruction("BBS_Init", 200, "HLOAD TEMP 309 TEMP 305 0").
+instruction("BBS_Init", 201, "MOVE TEMP 310 1").
+instruction("BBS_Init", 202, "MOVE TEMP 311 LT TEMP 307 TEMP 309").
+instruction("BBS_Init", 203, "MOVE TEMP 312 MINUS TEMP 310 TEMP 311").
+instruction("BBS_Init", 204, "CJUMP TEMP 312 L45").
+instruction("BBS_Init", 205, "ERROR").
+instruction("BBS_Init", 206, "L45     NOOP").
+instruction("BBS_Init", 207, "MOVE TEMP 313 TIMES TEMP 307 4").
+instruction("BBS_Init", 208, "MOVE TEMP 314 PLUS TEMP 313 4").
+instruction("BBS_Init", 209, "MOVE TEMP 315 PLUS TEMP 305 TEMP 314").
+instruction("BBS_Init", 210, "MOVE TEMP 316 19").
+instruction("BBS_Init", 211, "MOVE TEMP 317 TEMP 316").
+instruction("BBS_Init", 212, "HSTORE TEMP 315 0 TEMP 317").
+instruction("BBS_Init", 213, "HLOAD TEMP 318 TEMP 0 4").
+instruction("BBS_Init", 214, "MOVE TEMP 319 TEMP 318").
+instruction("BBS_Init", 215, "MOVE TEMP 320 9").
+instruction("BBS_Init", 216, "MOVE TEMP 321 TEMP 320").
+instruction("BBS_Init", 217, "MOVE TEMP 322 LT TEMP 321 0").
+instruction("BBS_Init", 218, "CJUMP TEMP 322 L46").
+instruction("BBS_Init", 219, "ERROR").
+instruction("BBS_Init", 220, "L46     NOOP").
+instruction("BBS_Init", 221, "HLOAD TEMP 323 TEMP 319 0").
+instruction("BBS_Init", 222, "MOVE TEMP 324 1").
+instruction("BBS_Init", 223, "MOVE TEMP 325 LT TEMP 321 TEMP 323").
+instruction("BBS_Init", 224, "MOVE TEMP 326 MINUS TEMP 324 TEMP 325").
+instruction("BBS_Init", 225, "CJUMP TEMP 326 L47").
+instruction("BBS_Init", 226, "ERROR").
+instruction("BBS_Init", 227, "L47     NOOP").
+instruction("BBS_Init", 228, "MOVE TEMP 327 TIMES TEMP 321 4").
+instruction("BBS_Init", 229, "MOVE TEMP 328 PLUS TEMP 327 4").
+instruction("BBS_Init", 230, "MOVE TEMP 329 PLUS TEMP 319 TEMP 328").
+instruction("BBS_Init", 231, "MOVE TEMP 330 5").
+instruction("BBS_Init", 232, "MOVE TEMP 331 TEMP 330").
+instruction("BBS_Init", 233, "HSTORE TEMP 329 0 TEMP 331").
+instruction("BBS_Init", 234, "MOVE TEMP 332 0").
+instruction("BBS_Init", 235, "RETURN TEMP 332").

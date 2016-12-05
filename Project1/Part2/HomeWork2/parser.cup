@@ -1,0 +1,84 @@
+/* Simple +/-/* expression language; parser evaluates constant expressions on the fly*/
+/**
+ *  Package and Import Specifications
+ */
+import java_cup.runtime.*;
+
+/**
+ *  Usercode Components
+ */
+parser code {:
+    // Connect this parser to a scanner!
+    Scanner s;
+    Parser(Scanner s){ this.s=s; }
+:}
+
+/* define how to connect to the scanner! */
+scan with {: return s.next_token(); :};
+
+/**
+ *  Symbol Lists
+ */
+
+/* Terminals (tokens returned by the scanner). */
+terminal            PLUS, EQUAL, LPAREN, RPAREN, LBRACE, RBRACE, IF, ELSE, IN,COMMA;
+terminal String     STRING_LITERAL;        // our scanner provides numbers as strings
+terminal String     IDENT;
+
+/*  Non terminals */
+non terminal String    expr_list;
+non terminal String    expr;      // used to store evaluated subexpressions
+non terminal String    identifier;
+non terminal String    list;
+non terminal String    element;
+non terminal String    function_name;
+non terminal String    function_body;
+non terminal String    arguments;
+non terminal String    body;
+non terminal String    condition;
+
+
+
+/**
+ *  Precedence Declarations
+ */
+precedence left PLUS ;
+
+/**
+ *  The Grammar Rules
+ */
+expr_list ::=  expr_list expr:e                    		{: System.out.println(e); :}
+	     | expr:e 						{: System.out.println(e); :}
+;
+
+expr      ::=  function_name:f_n				{: RESULT = f_n; :}  //klhsh sinartisis
+	     | function_name:f_n function_body:f_b 		{: RESULT = "(define " + f_n + f_b; :}  //orismos sinartisis 
+;
+
+function_name ::=  identifier:i LPAREN RPAREN			{: RESULT ="(" + i + ")" ; :}
+	     	 | identifier:i LPAREN arguments:args RPAREN	{: RESULT ="(" + i +" "+ args +")" ; :}
+;		
+
+function_body ::= LBRACE body:b RBRACE 				{: RESULT = " " +b + ")"; :}	
+;
+
+arguments ::=  arguments:args COMMA element:e			{: RESULT =args+" "+e; :}
+	     | element:e					{: RESULT =e; :}
+;
+body ::=  body:b PLUS element:e					{: RESULT ="(string-append "+b+" "+e+")"; :}
+	| IF LPAREN condition:c RPAREN body:b1 ELSE body:b2 	{: RESULT ="(if ("+c+")"+b1+b2+")"; :} // (if (equal? c "yes")(repeat x)x))
+	| element:e						{: RESULT =e; :}
+;
+condition ::=  body:i EQUAL body:e     				{: RESULT = "equal? "+i+ " " + e; :}   //equal? c "yes"
+	     | arguments:e1 IN arguments:e2			{: RESULT = "substring?"+" "+e1+" "+e2; :}		//substring? "ing" x
+	     | body:b						{: RESULT = b; :}
+;
+
+element ::=  identifier:i 					{: RESULT = i; :}
+	   | function_name:f_n					{: RESULT = f_n; :}
+	   | STRING_LITERAL:s					{: RESULT ="\""+ s +"\""; :}	
+;
+
+identifier ::= IDENT:i						{: RESULT = i; :}
+;
+	     

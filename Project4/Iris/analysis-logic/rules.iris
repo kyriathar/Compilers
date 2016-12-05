@@ -1,0 +1,145 @@
+LiveRangesOut(?m,?i,?v) :- next(?m,?i,?k),
+			   LiveRangesIn(?m,?k,?v).
+
+LiveRangesIn(?m,?i,?v) :- LiveRangesOut(?m,?i,?v),
+			  !varDef(?m,?i,?v).				
+
+LiveRangesIn(?m,?i,?v) :- varUse(?m,?i,?v).
+
+
+LiveNess(?m,?i,?v) :- LiveRangesOut(?m,?i,?v).
+
+
+DeadCodeComputation(?m, ?i):- varDef(?m,?i,?v),
+                   !LiveNess(?m,?i,?v),
+                   instruction(?m,?i,?str),
+                   !REGEX( ?str, ".*[ \t]CALL[ \t].*").
+DeadCodeComputation(?m, ?i):- varDef(?m,?i,?v),
+                   DeadForAllWrapper(?m, ?v),
+                   instruction(?m,?i,?str),
+                   !REGEX( ?str, ".*[ \t]CALL[ \t].*").
+
+
+DeadForAllWrapper(?m, ?v):-getFirst(?m,?i,?v),
+                           getLast(?m,?j,?v),
+                           DeadForAll(?m, ?i, ?j, ?v).
+
+DeadForAll(?m, ?i, ?j, ?v):- filteredUseNext(?m,?i,?j,?v),varUse(?m,?j,?v),DeadCodeComputation(?m,?j).
+DeadForAll(?m, ?i, ?j, ?v):- filteredUseNext(?m,?i,?k,?v),varUse(?m,?i,?v),DeadCodeComputation(?m,?i),DeadForAll(?m, ?k, ?j, ?v).
+
+
+
+reachable(?m,?i,?j):- next(?m,?i,?j).
+reachable(?m,?i,?j):- next(?m,?i,?k),reachable(?m,?k,?j).
+
+useNext(?m,?i,?j,?v):- reachable(?m,?i,?j),varUse(?m,?i,?v),varUse(?m,?j,?v).
+jumpedNext(?m,?i,?j,?v) :- useNext(?m,?i,?k,?v),
+                           useNext(?m,?k,?j,?v).
+
+filteredUseNext(?m,?i,?j,?v):- useNext(?m,?i,?j,?v),
+                           !jumpedNext(?m,?i,?j,?v) .
+multiUse(?m,?v):- varUse(?m,?i,?v),
+                  varUse(?m,?j,?v),?i!=?j.
+singleUse(?m,?v):-var(?m,?v),varUse(?m,?i,?v),!multiUse(?m,?v).
+filteredUseNext(?m,?i,?i,?v):-  varUse(?m,?i,?v),singleUse(?m,?v).
+
+getFirst(?m,?i,?v):- filteredUseNext(?m,?i,?i,?v).
+getFirst(?m,?i,?v):- filteredUseNext(?m,?i,?j,?v),
+                     !filteredUseNext(?m,?k,?i,?v).
+getLast(?m,?i,?v):- filteredUseNext(?m,?i,?i,?v).
+getLast(?m,?j,?v):-filteredUseNext(?m,?i,?j,?v),
+                     !filteredUseNext(?m,?j,?k,?v).
+
+
+MultiplePred(?m,?i) :- next(?m,?k,?i),
+		       next(?m,?j,?i),
+                       ?k!=?j .
+
+SinglePred(?m,?i) :- instruction(?m,?i,?str),
+		     !MultiplePred(?m,?i).
+
+ConstantsIn(?m,?i,?var,?value) :-  SinglePred(?m,?i),
+			           next(?m,?k,?i),
+			           ConstantsOut(?m,?k,?var,?value).	  
+
+
+ConstantsIn(?m,?i,?var,?value) :-  MultiplePred(?m,?i),
+			           next(?m,?prev1,?i),
+				   next(?m,?prev2,?i),	
+			           ConstantsOut(?m,?prev1,?var,?value),
+				   ConstantsOut(?m,?prev2,?var,?value),
+				   ?prev1!=?prev2.	  
+
+ConstantsOut(?m,?i,?var,?value) :- ConstantsIn(?m,?i,?var,?value),
+				   !varDef(?m,?i,?var).
+
+ConstantsOut(?m,?i,?var,?value) :- varDef(?m,?i,?var),
+				   constMove(?m,?i,?var,?value).
+
+ConstantsOut(?m,?i,?var,?value) :- varMove(?m,?i,?var,?constVar), 	
+				   ConstantsIn(?m,?i,?constVar,?value).
+	
+ConstantPropagation(?m,?i,?var,?value) :- ConstantsOut(?m,?i,?var,?value).
+
+
+CopiesIn(?m,?i,?var,?initVar) :-  SinglePred(?m,?i),
+			          next(?m,?k,?i),
+			          CopiesOut(?m,?k,?var,?initVar).	  
+
+
+CopiesIn(?m,?i,?var,?initVar) :-  MultiplePred(?m,?i),
+			          next(?m,?prev1,?i),
+				  next(?m,?prev2,?i),	
+			          CopiesOut(?m,?prev1,?var,?initVar),
+				  CopiesOut(?m,?prev2,?var,?initVar),
+				  ?prev1!=?prev2.	  
+
+CopiesOut(?m,?i,?var,?initVar) :- CopiesIn(?m,?i,?var,?initVar),
+				!varDef(?m,?i,?var).
+
+CopiesOut(?m,?i,?var,?initVar) :- varDef(?m,?i,?var),
+				varMove(?m,?i,?var,?initVar).
+
+CopiesOut(?m,?i,?var,?initVar) :- varMove(?m,?i,?var,?midVar), 	
+				CopiesIn(?m,?i,?midVar,?initVar).
+	
+
+CopyPropagation(?m,?i,?var,?initVar) :- CopiesOut(?m,?i,?var,?initVar).
+
+
+cJumpInstruction(?m, ?i) :- next(?m, ?i, ?j),
+                            next(?m, ?i, ?k),
+                            ?i+1 = ?k,
+                            ?j != ?k.
+jumpInstruction(?m, ?i) :- next(?m, ?i, ?j),
+                           ?i+1 = ?k,
+                           ?j != ?k,
+                           !next(?m, ?i, ?k).
+
+Label(?m,?i) :- next(?m,  ?prev,  ?i),
+                !?prev+1 = ?i.
+
+RestrictedNext(?m,?i,?j) :- next(?m,?i,?j),
+                            !cJumpInstruction(?m, ?i),
+                            !jumpInstruction(?m, ?i),
+                            !Label(?m,?j).
+
+Reachable(?m,?i,?i) :- instruction(?m,  ?i, ?str). 
+Reachable(?m,?i,?j) :- RestrictedNext(?m,?i,?j).
+Reachable(?m,?i,?j) :- RestrictedNext(?m,?i,?k),
+                       Reachable(?m,?k,?j).
+
+basicBlockStart(?method, 1) :- instruction(?method,  1, ?str).
+basicBlockStart(?method, ?start) :- Label(?method,?start) . 
+basicBlockStart(?method, ?start) :- next(?method,?prev,?start),
+                                    cJumpInstruction(?method, ?prev).
+
+BasicBlocksComputation(?method, ?start, ?end) :- basicBlockStart(?method, ?start),
+                                        Reachable(?method,?start,?end),
+                                        next(?method,?end,?afterEnd),
+                                        Label(?method,?afterEnd).
+
+BasicBlocksComputation(?method, ?start, ?end) :- basicBlockStart(?method, ?start),
+                                        Reachable(?method,?start,?end),
+                                        !next(?method,?end,?afterEnd).
+

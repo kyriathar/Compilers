@@ -1,0 +1,639 @@
+instruction("MAIN",  1, "MOVE TEMP 22 QSvTable").
+instruction("MAIN",  2, "MOVE TEMP 23 HALLOCATE 16").
+instruction("MAIN",  3, "HSTORE TEMP 22 0 TEMP 23").
+instruction("MAIN",  4, "MOVE TEMP 24 QS_Start").
+instruction("MAIN",  5, "HSTORE TEMP 23 0 TEMP 24").
+instruction("MAIN",  6, "MOVE TEMP 25 QS_Sort").
+instruction("MAIN",  7, "HSTORE TEMP 23 4 TEMP 25").
+instruction("MAIN",  8, "MOVE TEMP 26 QS_Print").
+instruction("MAIN",  9, "HSTORE TEMP 23 8 TEMP 26").
+instruction("MAIN", 10, "MOVE TEMP 27 QS_Init").
+instruction("MAIN", 11, "HSTORE TEMP 23 12 TEMP 27").
+instruction("MAIN", 12, "MOVE TEMP 28 HALLOCATE 12").
+instruction("MAIN", 13, "MOVE TEMP 29 QSvTable").
+instruction("MAIN", 14, "HLOAD TEMP 30 TEMP 29 0").
+instruction("MAIN", 15, "MOVE TEMP 31 4").
+instruction("MAIN", 16, "L1     NOOP").
+instruction("MAIN", 17, "MOVE TEMP 32 12").
+instruction("MAIN", 18, "MOVE TEMP 33 LT TEMP 31 TEMP 32").
+instruction("MAIN", 19, "CJUMP TEMP 33 L2").
+instruction("MAIN", 20, "MOVE TEMP 34 PLUS TEMP 28 TEMP 31").
+instruction("MAIN", 21, "MOVE TEMP 35 0").
+instruction("MAIN", 22, "HSTORE TEMP 34 0 TEMP 35").
+instruction("MAIN", 23, "MOVE TEMP 31 PLUS TEMP 31 4").
+instruction("MAIN", 24, "JUMP L1").
+instruction("MAIN", 25, "L2     NOOP").
+instruction("MAIN", 26, "HSTORE TEMP 28 0 TEMP 30").
+instruction("MAIN", 27, "MOVE TEMP 36 TEMP 28").
+instruction("MAIN", 28, "HLOAD TEMP 37 TEMP 36 0").
+instruction("MAIN", 29, "HLOAD TEMP 38 TEMP 37 0").
+instruction("MAIN", 30, "MOVE TEMP 39 10").
+instruction("MAIN", 31, "MOVE TEMP 40 CALL TEMP 38( TEMP 36 TEMP 39 )").
+instruction("MAIN", 32, "PRINT TEMP 40").
+instruction("QS_Start",  1, "MOVE TEMP 42 TEMP 0").
+instruction("QS_Start",  2, "HLOAD TEMP 43 TEMP 42 0").
+instruction("QS_Start",  3, "HLOAD TEMP 44 TEMP 43 12").
+instruction("QS_Start",  4, "MOVE TEMP 45 CALL TEMP 44( TEMP 42 TEMP 1 )").
+instruction("QS_Start",  5, "MOVE TEMP 41 TEMP 45").
+instruction("QS_Start",  6, "MOVE TEMP 46 TEMP 0").
+instruction("QS_Start",  7, "HLOAD TEMP 47 TEMP 46 0").
+instruction("QS_Start",  8, "HLOAD TEMP 48 TEMP 47 8").
+instruction("QS_Start",  9, "MOVE TEMP 49 CALL TEMP 48( TEMP 46 )").
+instruction("QS_Start", 10, "MOVE TEMP 41 TEMP 49").
+instruction("QS_Start", 11, "MOVE TEMP 50 9999").
+instruction("QS_Start", 12, "PRINT TEMP 50").
+instruction("QS_Start", 13, "HLOAD TEMP 51 TEMP 0 8").
+instruction("QS_Start", 14, "MOVE TEMP 52 1").
+instruction("QS_Start", 15, "MOVE TEMP 53 MINUS TEMP 51 TEMP 52").
+instruction("QS_Start", 16, "MOVE TEMP 41 TEMP 53").
+instruction("QS_Start", 17, "MOVE TEMP 54 TEMP 0").
+instruction("QS_Start", 18, "HLOAD TEMP 55 TEMP 54 0").
+instruction("QS_Start", 19, "HLOAD TEMP 56 TEMP 55 4").
+instruction("QS_Start", 20, "MOVE TEMP 57 0").
+instruction("QS_Start", 21, "MOVE TEMP 58 CALL TEMP 56( TEMP 54 TEMP 57 TEMP 41 )").
+instruction("QS_Start", 22, "MOVE TEMP 41 TEMP 58").
+instruction("QS_Start", 23, "MOVE TEMP 59 TEMP 0").
+instruction("QS_Start", 24, "HLOAD TEMP 60 TEMP 59 0").
+instruction("QS_Start", 25, "HLOAD TEMP 61 TEMP 60 8").
+instruction("QS_Start", 26, "MOVE TEMP 62 CALL TEMP 61( TEMP 59 )").
+instruction("QS_Start", 27, "MOVE TEMP 41 TEMP 62").
+instruction("QS_Start", 28, "MOVE TEMP 63 0").
+instruction("QS_Start", 29, "RETURN TEMP 63").
+instruction("QS_Sort",  1, "MOVE TEMP 65 0").
+instruction("QS_Sort",  2, "MOVE TEMP 64 TEMP 65").
+instruction("QS_Sort",  3, "MOVE TEMP 66 LT TEMP 1 TEMP 2").
+instruction("QS_Sort",  4, "CJUMP TEMP 66 L3").
+instruction("QS_Sort",  5, "HLOAD TEMP 68 TEMP 0 4").
+instruction("QS_Sort",  6, "MOVE TEMP 69 TEMP 68").
+instruction("QS_Sort",  7, "MOVE TEMP 70 TEMP 2").
+instruction("QS_Sort",  8, "MOVE TEMP 71 LT TEMP 70 0").
+instruction("QS_Sort",  9, "CJUMP TEMP 71 L5").
+instruction("QS_Sort", 10, "ERROR").
+instruction("QS_Sort", 11, "L5     NOOP").
+instruction("QS_Sort", 12, "HLOAD TEMP 72 TEMP 69 0").
+instruction("QS_Sort", 13, "MOVE TEMP 73 1").
+instruction("QS_Sort", 14, "MOVE TEMP 74 LT TEMP 70 TEMP 72").
+instruction("QS_Sort", 15, "MOVE TEMP 75 MINUS TEMP 73 TEMP 74").
+instruction("QS_Sort", 16, "CJUMP TEMP 75 L6").
+instruction("QS_Sort", 17, "ERROR").
+instruction("QS_Sort", 18, "L6     NOOP").
+instruction("QS_Sort", 19, "MOVE TEMP 76 TIMES TEMP 70 4").
+instruction("QS_Sort", 20, "MOVE TEMP 77 PLUS TEMP 76 4").
+instruction("QS_Sort", 21, "MOVE TEMP 78 PLUS TEMP 69 TEMP 77").
+instruction("QS_Sort", 22, "HLOAD TEMP 79 TEMP 78 0").
+instruction("QS_Sort", 23, "MOVE TEMP 67 TEMP 79").
+instruction("QS_Sort", 24, "MOVE TEMP 81 1").
+instruction("QS_Sort", 25, "MOVE TEMP 82 MINUS TEMP 1 TEMP 81").
+instruction("QS_Sort", 26, "MOVE TEMP 80 TEMP 82").
+instruction("QS_Sort", 27, "MOVE TEMP 83 TEMP 2").
+instruction("QS_Sort", 28, "MOVE TEMP 85 1").
+instruction("QS_Sort", 29, "MOVE TEMP 84 TEMP 85").
+instruction("QS_Sort", 30, "L7     NOOP").
+instruction("QS_Sort", 31, "CJUMP TEMP 84 L8").
+instruction("QS_Sort", 32, "MOVE TEMP 87 1").
+instruction("QS_Sort", 33, "MOVE TEMP 86 TEMP 87").
+instruction("QS_Sort", 34, "L9     NOOP").
+instruction("QS_Sort", 35, "CJUMP TEMP 86 L10").
+instruction("QS_Sort", 36, "MOVE TEMP 88 1").
+instruction("QS_Sort", 37, "MOVE TEMP 89 PLUS TEMP 80 TEMP 88").
+instruction("QS_Sort", 38, "MOVE TEMP 80 TEMP 89").
+instruction("QS_Sort", 39, "HLOAD TEMP 91 TEMP 0 4").
+instruction("QS_Sort", 40, "MOVE TEMP 92 TEMP 91").
+instruction("QS_Sort", 41, "MOVE TEMP 93 TEMP 80").
+instruction("QS_Sort", 42, "MOVE TEMP 94 LT TEMP 93 0").
+instruction("QS_Sort", 43, "CJUMP TEMP 94 L11").
+instruction("QS_Sort", 44, "ERROR").
+instruction("QS_Sort", 45, "L11     NOOP").
+instruction("QS_Sort", 46, "HLOAD TEMP 95 TEMP 92 0").
+instruction("QS_Sort", 47, "MOVE TEMP 96 1").
+instruction("QS_Sort", 48, "MOVE TEMP 97 LT TEMP 93 TEMP 95").
+instruction("QS_Sort", 49, "MOVE TEMP 98 MINUS TEMP 96 TEMP 97").
+instruction("QS_Sort", 50, "CJUMP TEMP 98 L12").
+instruction("QS_Sort", 51, "ERROR").
+instruction("QS_Sort", 52, "L12     NOOP").
+instruction("QS_Sort", 53, "MOVE TEMP 99 TIMES TEMP 93 4").
+instruction("QS_Sort", 54, "MOVE TEMP 100 PLUS TEMP 99 4").
+instruction("QS_Sort", 55, "MOVE TEMP 101 PLUS TEMP 92 TEMP 100").
+instruction("QS_Sort", 56, "HLOAD TEMP 102 TEMP 101 0").
+instruction("QS_Sort", 57, "MOVE TEMP 90 TEMP 102").
+instruction("QS_Sort", 58, "MOVE TEMP 105 LT TEMP 90 TEMP 67").
+instruction("QS_Sort", 59, "MOVE TEMP 103 1").
+instruction("QS_Sort", 60, "MOVE TEMP 104 MINUS TEMP 103 TEMP 105").
+instruction("QS_Sort", 61, "CJUMP TEMP 104 L13").
+instruction("QS_Sort", 62, "MOVE TEMP 106 0").
+instruction("QS_Sort", 63, "MOVE TEMP 86 TEMP 106").
+instruction("QS_Sort", 64, "JUMP L14").
+instruction("QS_Sort", 65, "L13     NOOP").
+instruction("QS_Sort", 66, "MOVE TEMP 107 1").
+instruction("QS_Sort", 67, "MOVE TEMP 86 TEMP 107").
+instruction("QS_Sort", 68, "L14     NOOP").
+instruction("QS_Sort", 69, "JUMP L9").
+instruction("QS_Sort", 70, "L10     NOOP").
+instruction("QS_Sort", 71, "MOVE TEMP 108 1").
+instruction("QS_Sort", 72, "MOVE TEMP 86 TEMP 108").
+instruction("QS_Sort", 73, "L15     NOOP").
+instruction("QS_Sort", 74, "CJUMP TEMP 86 L16").
+instruction("QS_Sort", 75, "MOVE TEMP 109 1").
+instruction("QS_Sort", 76, "MOVE TEMP 110 MINUS TEMP 83 TEMP 109").
+instruction("QS_Sort", 77, "MOVE TEMP 83 TEMP 110").
+instruction("QS_Sort", 78, "HLOAD TEMP 111 TEMP 0 4").
+instruction("QS_Sort", 79, "MOVE TEMP 112 TEMP 111").
+instruction("QS_Sort", 80, "MOVE TEMP 113 TEMP 83").
+instruction("QS_Sort", 81, "MOVE TEMP 114 LT TEMP 113 0").
+instruction("QS_Sort", 82, "CJUMP TEMP 114 L17").
+instruction("QS_Sort", 83, "ERROR").
+instruction("QS_Sort", 84, "L17     NOOP").
+instruction("QS_Sort", 85, "HLOAD TEMP 115 TEMP 112 0").
+instruction("QS_Sort", 86, "MOVE TEMP 116 1").
+instruction("QS_Sort", 87, "MOVE TEMP 117 LT TEMP 113 TEMP 115").
+instruction("QS_Sort", 88, "MOVE TEMP 118 MINUS TEMP 116 TEMP 117").
+instruction("QS_Sort", 89, "CJUMP TEMP 118 L18").
+instruction("QS_Sort", 90, "ERROR").
+instruction("QS_Sort", 91, "L18     NOOP").
+instruction("QS_Sort", 92, "MOVE TEMP 119 TIMES TEMP 113 4").
+instruction("QS_Sort", 93, "MOVE TEMP 120 PLUS TEMP 119 4").
+instruction("QS_Sort", 94, "MOVE TEMP 121 PLUS TEMP 112 TEMP 120").
+instruction("QS_Sort", 95, "HLOAD TEMP 122 TEMP 121 0").
+instruction("QS_Sort", 96, "MOVE TEMP 90 TEMP 122").
+instruction("QS_Sort", 97, "MOVE TEMP 125 LT TEMP 67 TEMP 90").
+instruction("QS_Sort", 98, "MOVE TEMP 123 1").
+instruction("QS_Sort", 99, "MOVE TEMP 124 MINUS TEMP 123 TEMP 125").
+instruction("QS_Sort", 100, "CJUMP TEMP 124 L19").
+instruction("QS_Sort", 101, "MOVE TEMP 126 0").
+instruction("QS_Sort", 102, "MOVE TEMP 86 TEMP 126").
+instruction("QS_Sort", 103, "JUMP L20").
+instruction("QS_Sort", 104, "L19     NOOP").
+instruction("QS_Sort", 105, "MOVE TEMP 127 1").
+instruction("QS_Sort", 106, "MOVE TEMP 86 TEMP 127").
+instruction("QS_Sort", 107, "L20     NOOP").
+instruction("QS_Sort", 108, "JUMP L15").
+instruction("QS_Sort", 109, "L16     NOOP").
+instruction("QS_Sort", 110, "HLOAD TEMP 128 TEMP 0 4").
+instruction("QS_Sort", 111, "MOVE TEMP 129 TEMP 128").
+instruction("QS_Sort", 112, "MOVE TEMP 130 TEMP 80").
+instruction("QS_Sort", 113, "MOVE TEMP 131 LT TEMP 130 0").
+instruction("QS_Sort", 114, "CJUMP TEMP 131 L21").
+instruction("QS_Sort", 115, "ERROR").
+instruction("QS_Sort", 116, "L21     NOOP").
+instruction("QS_Sort", 117, "HLOAD TEMP 132 TEMP 129 0").
+instruction("QS_Sort", 118, "MOVE TEMP 133 1").
+instruction("QS_Sort", 119, "MOVE TEMP 134 LT TEMP 130 TEMP 132").
+instruction("QS_Sort", 120, "MOVE TEMP 135 MINUS TEMP 133 TEMP 134").
+instruction("QS_Sort", 121, "CJUMP TEMP 135 L22").
+instruction("QS_Sort", 122, "ERROR").
+instruction("QS_Sort", 123, "L22     NOOP").
+instruction("QS_Sort", 124, "MOVE TEMP 136 TIMES TEMP 130 4").
+instruction("QS_Sort", 125, "MOVE TEMP 137 PLUS TEMP 136 4").
+instruction("QS_Sort", 126, "MOVE TEMP 138 PLUS TEMP 129 TEMP 137").
+instruction("QS_Sort", 127, "HLOAD TEMP 139 TEMP 138 0").
+instruction("QS_Sort", 128, "MOVE TEMP 64 TEMP 139").
+instruction("QS_Sort", 129, "HLOAD TEMP 140 TEMP 0 4").
+instruction("QS_Sort", 130, "MOVE TEMP 141 TEMP 140").
+instruction("QS_Sort", 131, "MOVE TEMP 142 TEMP 80").
+instruction("QS_Sort", 132, "MOVE TEMP 143 LT TEMP 142 0").
+instruction("QS_Sort", 133, "CJUMP TEMP 143 L23").
+instruction("QS_Sort", 134, "ERROR").
+instruction("QS_Sort", 135, "L23     NOOP").
+instruction("QS_Sort", 136, "HLOAD TEMP 144 TEMP 141 0").
+instruction("QS_Sort", 137, "MOVE TEMP 145 1").
+instruction("QS_Sort", 138, "MOVE TEMP 146 LT TEMP 142 TEMP 144").
+instruction("QS_Sort", 139, "MOVE TEMP 147 MINUS TEMP 145 TEMP 146").
+instruction("QS_Sort", 140, "CJUMP TEMP 147 L24").
+instruction("QS_Sort", 141, "ERROR").
+instruction("QS_Sort", 142, "L24     NOOP").
+instruction("QS_Sort", 143, "MOVE TEMP 148 TIMES TEMP 142 4").
+instruction("QS_Sort", 144, "MOVE TEMP 149 PLUS TEMP 148 4").
+instruction("QS_Sort", 145, "MOVE TEMP 150 PLUS TEMP 141 TEMP 149").
+instruction("QS_Sort", 146, "HLOAD TEMP 151 TEMP 0 4").
+instruction("QS_Sort", 147, "MOVE TEMP 152 TEMP 151").
+instruction("QS_Sort", 148, "MOVE TEMP 153 TEMP 83").
+instruction("QS_Sort", 149, "MOVE TEMP 154 LT TEMP 153 0").
+instruction("QS_Sort", 150, "CJUMP TEMP 154 L25").
+instruction("QS_Sort", 151, "ERROR").
+instruction("QS_Sort", 152, "L25     NOOP").
+instruction("QS_Sort", 153, "HLOAD TEMP 155 TEMP 152 0").
+instruction("QS_Sort", 154, "MOVE TEMP 156 1").
+instruction("QS_Sort", 155, "MOVE TEMP 157 LT TEMP 153 TEMP 155").
+instruction("QS_Sort", 156, "MOVE TEMP 158 MINUS TEMP 156 TEMP 157").
+instruction("QS_Sort", 157, "CJUMP TEMP 158 L26").
+instruction("QS_Sort", 158, "ERROR").
+instruction("QS_Sort", 159, "L26     NOOP").
+instruction("QS_Sort", 160, "MOVE TEMP 159 TIMES TEMP 153 4").
+instruction("QS_Sort", 161, "MOVE TEMP 160 PLUS TEMP 159 4").
+instruction("QS_Sort", 162, "MOVE TEMP 161 PLUS TEMP 152 TEMP 160").
+instruction("QS_Sort", 163, "HLOAD TEMP 162 TEMP 161 0").
+instruction("QS_Sort", 164, "MOVE TEMP 163 TEMP 162").
+instruction("QS_Sort", 165, "HSTORE TEMP 150 0 TEMP 163").
+instruction("QS_Sort", 166, "HLOAD TEMP 164 TEMP 0 4").
+instruction("QS_Sort", 167, "MOVE TEMP 165 TEMP 164").
+instruction("QS_Sort", 168, "MOVE TEMP 166 TEMP 83").
+instruction("QS_Sort", 169, "MOVE TEMP 167 LT TEMP 166 0").
+instruction("QS_Sort", 170, "CJUMP TEMP 167 L27").
+instruction("QS_Sort", 171, "ERROR").
+instruction("QS_Sort", 172, "L27     NOOP").
+instruction("QS_Sort", 173, "HLOAD TEMP 168 TEMP 165 0").
+instruction("QS_Sort", 174, "MOVE TEMP 169 1").
+instruction("QS_Sort", 175, "MOVE TEMP 170 LT TEMP 166 TEMP 168").
+instruction("QS_Sort", 176, "MOVE TEMP 171 MINUS TEMP 169 TEMP 170").
+instruction("QS_Sort", 177, "CJUMP TEMP 171 L28").
+instruction("QS_Sort", 178, "ERROR").
+instruction("QS_Sort", 179, "L28     NOOP").
+instruction("QS_Sort", 180, "MOVE TEMP 172 TIMES TEMP 166 4").
+instruction("QS_Sort", 181, "MOVE TEMP 173 PLUS TEMP 172 4").
+instruction("QS_Sort", 182, "MOVE TEMP 174 PLUS TEMP 165 TEMP 173").
+instruction("QS_Sort", 183, "MOVE TEMP 175 TEMP 64").
+instruction("QS_Sort", 184, "HSTORE TEMP 174 0 TEMP 175").
+instruction("QS_Sort", 185, "MOVE TEMP 176 1").
+instruction("QS_Sort", 186, "MOVE TEMP 177 PLUS TEMP 80 TEMP 176").
+instruction("QS_Sort", 187, "MOVE TEMP 178 LT TEMP 83 TEMP 177").
+instruction("QS_Sort", 188, "CJUMP TEMP 178 L29").
+instruction("QS_Sort", 189, "MOVE TEMP 179 0").
+instruction("QS_Sort", 190, "MOVE TEMP 84 TEMP 179").
+instruction("QS_Sort", 191, "JUMP L30").
+instruction("QS_Sort", 192, "L29     NOOP").
+instruction("QS_Sort", 193, "MOVE TEMP 180 1").
+instruction("QS_Sort", 194, "MOVE TEMP 84 TEMP 180").
+instruction("QS_Sort", 195, "L30     NOOP").
+instruction("QS_Sort", 196, "JUMP L7").
+instruction("QS_Sort", 197, "L8     NOOP").
+instruction("QS_Sort", 198, "HLOAD TEMP 181 TEMP 0 4").
+instruction("QS_Sort", 199, "MOVE TEMP 182 TEMP 181").
+instruction("QS_Sort", 200, "MOVE TEMP 183 TEMP 83").
+instruction("QS_Sort", 201, "MOVE TEMP 184 LT TEMP 183 0").
+instruction("QS_Sort", 202, "CJUMP TEMP 184 L31").
+instruction("QS_Sort", 203, "ERROR").
+instruction("QS_Sort", 204, "L31     NOOP").
+instruction("QS_Sort", 205, "HLOAD TEMP 185 TEMP 182 0").
+instruction("QS_Sort", 206, "MOVE TEMP 186 1").
+instruction("QS_Sort", 207, "MOVE TEMP 187 LT TEMP 183 TEMP 185").
+instruction("QS_Sort", 208, "MOVE TEMP 188 MINUS TEMP 186 TEMP 187").
+instruction("QS_Sort", 209, "CJUMP TEMP 188 L32").
+instruction("QS_Sort", 210, "ERROR").
+instruction("QS_Sort", 211, "L32     NOOP").
+instruction("QS_Sort", 212, "MOVE TEMP 189 TIMES TEMP 183 4").
+instruction("QS_Sort", 213, "MOVE TEMP 190 PLUS TEMP 189 4").
+instruction("QS_Sort", 214, "MOVE TEMP 191 PLUS TEMP 182 TEMP 190").
+instruction("QS_Sort", 215, "HLOAD TEMP 192 TEMP 0 4").
+instruction("QS_Sort", 216, "MOVE TEMP 193 TEMP 192").
+instruction("QS_Sort", 217, "MOVE TEMP 194 TEMP 80").
+instruction("QS_Sort", 218, "MOVE TEMP 195 LT TEMP 194 0").
+instruction("QS_Sort", 219, "CJUMP TEMP 195 L33").
+instruction("QS_Sort", 220, "ERROR").
+instruction("QS_Sort", 221, "L33     NOOP").
+instruction("QS_Sort", 222, "HLOAD TEMP 196 TEMP 193 0").
+instruction("QS_Sort", 223, "MOVE TEMP 197 1").
+instruction("QS_Sort", 224, "MOVE TEMP 198 LT TEMP 194 TEMP 196").
+instruction("QS_Sort", 225, "MOVE TEMP 199 MINUS TEMP 197 TEMP 198").
+instruction("QS_Sort", 226, "CJUMP TEMP 199 L34").
+instruction("QS_Sort", 227, "ERROR").
+instruction("QS_Sort", 228, "L34     NOOP").
+instruction("QS_Sort", 229, "MOVE TEMP 200 TIMES TEMP 194 4").
+instruction("QS_Sort", 230, "MOVE TEMP 201 PLUS TEMP 200 4").
+instruction("QS_Sort", 231, "MOVE TEMP 202 PLUS TEMP 193 TEMP 201").
+instruction("QS_Sort", 232, "HLOAD TEMP 203 TEMP 202 0").
+instruction("QS_Sort", 233, "MOVE TEMP 204 TEMP 203").
+instruction("QS_Sort", 234, "HSTORE TEMP 191 0 TEMP 204").
+instruction("QS_Sort", 235, "HLOAD TEMP 205 TEMP 0 4").
+instruction("QS_Sort", 236, "MOVE TEMP 206 TEMP 205").
+instruction("QS_Sort", 237, "MOVE TEMP 207 TEMP 80").
+instruction("QS_Sort", 238, "MOVE TEMP 208 LT TEMP 207 0").
+instruction("QS_Sort", 239, "CJUMP TEMP 208 L35").
+instruction("QS_Sort", 240, "ERROR").
+instruction("QS_Sort", 241, "L35     NOOP").
+instruction("QS_Sort", 242, "HLOAD TEMP 209 TEMP 206 0").
+instruction("QS_Sort", 243, "MOVE TEMP 210 1").
+instruction("QS_Sort", 244, "MOVE TEMP 211 LT TEMP 207 TEMP 209").
+instruction("QS_Sort", 245, "MOVE TEMP 212 MINUS TEMP 210 TEMP 211").
+instruction("QS_Sort", 246, "CJUMP TEMP 212 L36").
+instruction("QS_Sort", 247, "ERROR").
+instruction("QS_Sort", 248, "L36     NOOP").
+instruction("QS_Sort", 249, "MOVE TEMP 213 TIMES TEMP 207 4").
+instruction("QS_Sort", 250, "MOVE TEMP 214 PLUS TEMP 213 4").
+instruction("QS_Sort", 251, "MOVE TEMP 215 PLUS TEMP 206 TEMP 214").
+instruction("QS_Sort", 252, "HLOAD TEMP 216 TEMP 0 4").
+instruction("QS_Sort", 253, "MOVE TEMP 217 TEMP 216").
+instruction("QS_Sort", 254, "MOVE TEMP 218 TEMP 2").
+instruction("QS_Sort", 255, "MOVE TEMP 219 LT TEMP 218 0").
+instruction("QS_Sort", 256, "CJUMP TEMP 219 L37").
+instruction("QS_Sort", 257, "ERROR").
+instruction("QS_Sort", 258, "L37     NOOP").
+instruction("QS_Sort", 259, "HLOAD TEMP 220 TEMP 217 0").
+instruction("QS_Sort", 260, "MOVE TEMP 221 1").
+instruction("QS_Sort", 261, "MOVE TEMP 222 LT TEMP 218 TEMP 220").
+instruction("QS_Sort", 262, "MOVE TEMP 223 MINUS TEMP 221 TEMP 222").
+instruction("QS_Sort", 263, "CJUMP TEMP 223 L38").
+instruction("QS_Sort", 264, "ERROR").
+instruction("QS_Sort", 265, "L38     NOOP").
+instruction("QS_Sort", 266, "MOVE TEMP 224 TIMES TEMP 218 4").
+instruction("QS_Sort", 267, "MOVE TEMP 225 PLUS TEMP 224 4").
+instruction("QS_Sort", 268, "MOVE TEMP 226 PLUS TEMP 217 TEMP 225").
+instruction("QS_Sort", 269, "HLOAD TEMP 227 TEMP 226 0").
+instruction("QS_Sort", 270, "MOVE TEMP 228 TEMP 227").
+instruction("QS_Sort", 271, "HSTORE TEMP 215 0 TEMP 228").
+instruction("QS_Sort", 272, "HLOAD TEMP 229 TEMP 0 4").
+instruction("QS_Sort", 273, "MOVE TEMP 230 TEMP 229").
+instruction("QS_Sort", 274, "MOVE TEMP 231 TEMP 2").
+instruction("QS_Sort", 275, "MOVE TEMP 232 LT TEMP 231 0").
+instruction("QS_Sort", 276, "CJUMP TEMP 232 L39").
+instruction("QS_Sort", 277, "ERROR").
+instruction("QS_Sort", 278, "L39     NOOP").
+instruction("QS_Sort", 279, "HLOAD TEMP 233 TEMP 230 0").
+instruction("QS_Sort", 280, "MOVE TEMP 234 1").
+instruction("QS_Sort", 281, "MOVE TEMP 235 LT TEMP 231 TEMP 233").
+instruction("QS_Sort", 282, "MOVE TEMP 236 MINUS TEMP 234 TEMP 235").
+instruction("QS_Sort", 283, "CJUMP TEMP 236 L40").
+instruction("QS_Sort", 284, "ERROR").
+instruction("QS_Sort", 285, "L40     NOOP").
+instruction("QS_Sort", 286, "MOVE TEMP 237 TIMES TEMP 231 4").
+instruction("QS_Sort", 287, "MOVE TEMP 238 PLUS TEMP 237 4").
+instruction("QS_Sort", 288, "MOVE TEMP 239 PLUS TEMP 230 TEMP 238").
+instruction("QS_Sort", 289, "MOVE TEMP 240 TEMP 64").
+instruction("QS_Sort", 290, "HSTORE TEMP 239 0 TEMP 240").
+instruction("QS_Sort", 291, "MOVE TEMP 242 TEMP 0").
+instruction("QS_Sort", 292, "HLOAD TEMP 243 TEMP 242 0").
+instruction("QS_Sort", 293, "HLOAD TEMP 244 TEMP 243 4").
+instruction("QS_Sort", 294, "MOVE TEMP 245 1").
+instruction("QS_Sort", 295, "MOVE TEMP 246 MINUS TEMP 80 TEMP 245").
+instruction("QS_Sort", 296, "MOVE TEMP 247 CALL TEMP 244( TEMP 242 TEMP 1 TEMP 246 )").
+instruction("QS_Sort", 297, "MOVE TEMP 241 TEMP 247").
+instruction("QS_Sort", 298, "MOVE TEMP 248 TEMP 0").
+instruction("QS_Sort", 299, "HLOAD TEMP 249 TEMP 248 0").
+instruction("QS_Sort", 300, "HLOAD TEMP 250 TEMP 249 4").
+instruction("QS_Sort", 301, "MOVE TEMP 251 1").
+instruction("QS_Sort", 302, "MOVE TEMP 252 PLUS TEMP 80 TEMP 251").
+instruction("QS_Sort", 303, "MOVE TEMP 253 CALL TEMP 250( TEMP 248 TEMP 252 TEMP 2 )").
+instruction("QS_Sort", 304, "MOVE TEMP 241 TEMP 253").
+instruction("QS_Sort", 305, "JUMP L4").
+instruction("QS_Sort", 306, "L3     NOOP").
+instruction("QS_Sort", 307, "MOVE TEMP 254 0").
+instruction("QS_Sort", 308, "MOVE TEMP 241 TEMP 254").
+instruction("QS_Sort", 309, "L4     NOOP").
+instruction("QS_Sort", 310, "MOVE TEMP 255 0").
+instruction("QS_Sort", 311, "RETURN TEMP 255").
+instruction("QS_Print",  1, "MOVE TEMP 257 0").
+instruction("QS_Print",  2, "MOVE TEMP 256 TEMP 257").
+instruction("QS_Print",  3, "L41     NOOP").
+instruction("QS_Print",  4, "HLOAD TEMP 258 TEMP 0 8").
+instruction("QS_Print",  5, "MOVE TEMP 259 LT TEMP 256 TEMP 258").
+instruction("QS_Print",  6, "CJUMP TEMP 259 L42").
+instruction("QS_Print",  7, "HLOAD TEMP 260 TEMP 0 4").
+instruction("QS_Print",  8, "MOVE TEMP 261 TEMP 260").
+instruction("QS_Print",  9, "MOVE TEMP 262 TEMP 256").
+instruction("QS_Print", 10, "MOVE TEMP 263 LT TEMP 262 0").
+instruction("QS_Print", 11, "CJUMP TEMP 263 L43").
+instruction("QS_Print", 12, "ERROR").
+instruction("QS_Print", 13, "L43     NOOP").
+instruction("QS_Print", 14, "HLOAD TEMP 264 TEMP 261 0").
+instruction("QS_Print", 15, "MOVE TEMP 265 1").
+instruction("QS_Print", 16, "MOVE TEMP 266 LT TEMP 262 TEMP 264").
+instruction("QS_Print", 17, "MOVE TEMP 267 MINUS TEMP 265 TEMP 266").
+instruction("QS_Print", 18, "CJUMP TEMP 267 L44").
+instruction("QS_Print", 19, "ERROR").
+instruction("QS_Print", 20, "L44     NOOP").
+instruction("QS_Print", 21, "MOVE TEMP 268 TIMES TEMP 262 4").
+instruction("QS_Print", 22, "MOVE TEMP 269 PLUS TEMP 268 4").
+instruction("QS_Print", 23, "MOVE TEMP 270 PLUS TEMP 261 TEMP 269").
+instruction("QS_Print", 24, "HLOAD TEMP 271 TEMP 270 0").
+instruction("QS_Print", 25, "PRINT TEMP 271").
+instruction("QS_Print", 26, "MOVE TEMP 272 1").
+instruction("QS_Print", 27, "MOVE TEMP 273 PLUS TEMP 256 TEMP 272").
+instruction("QS_Print", 28, "MOVE TEMP 256 TEMP 273").
+instruction("QS_Print", 29, "JUMP L41").
+instruction("QS_Print", 30, "L42     NOOP").
+instruction("QS_Print", 31, "MOVE TEMP 274 0").
+instruction("QS_Print", 32, "RETURN TEMP 274").
+instruction("QS_Init",  1, "MOVE TEMP 275 PLUS TEMP 0 8").
+instruction("QS_Init",  2, "HSTORE TEMP 275 0 TEMP 1").
+instruction("QS_Init",  3, "MOVE TEMP 276 PLUS TEMP 0 4").
+instruction("QS_Init",  4, "MOVE TEMP 277 TEMP 1").
+instruction("QS_Init",  5, "MOVE TEMP 278 LT TEMP 277 0").
+instruction("QS_Init",  6, "CJUMP TEMP 278 L45").
+instruction("QS_Init",  7, "ERROR").
+instruction("QS_Init",  8, "L45     NOOP").
+instruction("QS_Init",  9, "MOVE TEMP 279 PLUS TEMP 277 1").
+instruction("QS_Init", 10, "MOVE TEMP 280 TIMES TEMP 279 4").
+instruction("QS_Init", 11, "MOVE TEMP 281 HALLOCATE TEMP 280").
+instruction("QS_Init", 12, "MOVE TEMP 282 0").
+instruction("QS_Init", 13, "MOVE TEMP 283 4").
+instruction("QS_Init", 14, "L46     NOOP").
+instruction("QS_Init", 15, "MOVE TEMP 284 LT TEMP 283 TEMP 280").
+instruction("QS_Init", 16, "CJUMP TEMP 284 L47").
+instruction("QS_Init", 17, "MOVE TEMP 285 PLUS TEMP 281 TEMP 283").
+instruction("QS_Init", 18, "HSTORE TEMP 285 0 TEMP 282").
+instruction("QS_Init", 19, "MOVE TEMP 283 PLUS TEMP 283 4").
+instruction("QS_Init", 20, "JUMP L46").
+instruction("QS_Init", 21, "L47     NOOP").
+instruction("QS_Init", 22, "HSTORE TEMP 281 0 TEMP 277").
+instruction("QS_Init", 23, "HSTORE TEMP 276 0 TEMP 281").
+instruction("QS_Init", 24, "HLOAD TEMP 286 TEMP 0 4").
+instruction("QS_Init", 25, "MOVE TEMP 287 TEMP 286").
+instruction("QS_Init", 26, "MOVE TEMP 288 0").
+instruction("QS_Init", 27, "MOVE TEMP 289 TEMP 288").
+instruction("QS_Init", 28, "MOVE TEMP 290 LT TEMP 289 0").
+instruction("QS_Init", 29, "CJUMP TEMP 290 L48").
+instruction("QS_Init", 30, "ERROR").
+instruction("QS_Init", 31, "L48     NOOP").
+instruction("QS_Init", 32, "HLOAD TEMP 291 TEMP 287 0").
+instruction("QS_Init", 33, "MOVE TEMP 292 1").
+instruction("QS_Init", 34, "MOVE TEMP 293 LT TEMP 289 TEMP 291").
+instruction("QS_Init", 35, "MOVE TEMP 294 MINUS TEMP 292 TEMP 293").
+instruction("QS_Init", 36, "CJUMP TEMP 294 L49").
+instruction("QS_Init", 37, "ERROR").
+instruction("QS_Init", 38, "L49     NOOP").
+instruction("QS_Init", 39, "MOVE TEMP 295 TIMES TEMP 289 4").
+instruction("QS_Init", 40, "MOVE TEMP 296 PLUS TEMP 295 4").
+instruction("QS_Init", 41, "MOVE TEMP 297 PLUS TEMP 287 TEMP 296").
+instruction("QS_Init", 42, "MOVE TEMP 298 20").
+instruction("QS_Init", 43, "MOVE TEMP 299 TEMP 298").
+instruction("QS_Init", 44, "HSTORE TEMP 297 0 TEMP 299").
+instruction("QS_Init", 45, "HLOAD TEMP 300 TEMP 0 4").
+instruction("QS_Init", 46, "MOVE TEMP 301 TEMP 300").
+instruction("QS_Init", 47, "MOVE TEMP 302 1").
+instruction("QS_Init", 48, "MOVE TEMP 303 TEMP 302").
+instruction("QS_Init", 49, "MOVE TEMP 304 LT TEMP 303 0").
+instruction("QS_Init", 50, "CJUMP TEMP 304 L50").
+instruction("QS_Init", 51, "ERROR").
+instruction("QS_Init", 52, "L50     NOOP").
+instruction("QS_Init", 53, "HLOAD TEMP 305 TEMP 301 0").
+instruction("QS_Init", 54, "MOVE TEMP 306 1").
+instruction("QS_Init", 55, "MOVE TEMP 307 LT TEMP 303 TEMP 305").
+instruction("QS_Init", 56, "MOVE TEMP 308 MINUS TEMP 306 TEMP 307").
+instruction("QS_Init", 57, "CJUMP TEMP 308 L51").
+instruction("QS_Init", 58, "ERROR").
+instruction("QS_Init", 59, "L51     NOOP").
+instruction("QS_Init", 60, "MOVE TEMP 309 TIMES TEMP 303 4").
+instruction("QS_Init", 61, "MOVE TEMP 310 PLUS TEMP 309 4").
+instruction("QS_Init", 62, "MOVE TEMP 311 PLUS TEMP 301 TEMP 310").
+instruction("QS_Init", 63, "MOVE TEMP 312 7").
+instruction("QS_Init", 64, "MOVE TEMP 313 TEMP 312").
+instruction("QS_Init", 65, "HSTORE TEMP 311 0 TEMP 313").
+instruction("QS_Init", 66, "HLOAD TEMP 314 TEMP 0 4").
+instruction("QS_Init", 67, "MOVE TEMP 315 TEMP 314").
+instruction("QS_Init", 68, "MOVE TEMP 316 2").
+instruction("QS_Init", 69, "MOVE TEMP 317 TEMP 316").
+instruction("QS_Init", 70, "MOVE TEMP 318 LT TEMP 317 0").
+instruction("QS_Init", 71, "CJUMP TEMP 318 L52").
+instruction("QS_Init", 72, "ERROR").
+instruction("QS_Init", 73, "L52     NOOP").
+instruction("QS_Init", 74, "HLOAD TEMP 319 TEMP 315 0").
+instruction("QS_Init", 75, "MOVE TEMP 320 1").
+instruction("QS_Init", 76, "MOVE TEMP 321 LT TEMP 317 TEMP 319").
+instruction("QS_Init", 77, "MOVE TEMP 322 MINUS TEMP 320 TEMP 321").
+instruction("QS_Init", 78, "CJUMP TEMP 322 L53").
+instruction("QS_Init", 79, "ERROR").
+instruction("QS_Init", 80, "L53     NOOP").
+instruction("QS_Init", 81, "MOVE TEMP 323 TIMES TEMP 317 4").
+instruction("QS_Init", 82, "MOVE TEMP 324 PLUS TEMP 323 4").
+instruction("QS_Init", 83, "MOVE TEMP 325 PLUS TEMP 315 TEMP 324").
+instruction("QS_Init", 84, "MOVE TEMP 326 12").
+instruction("QS_Init", 85, "MOVE TEMP 327 TEMP 326").
+instruction("QS_Init", 86, "HSTORE TEMP 325 0 TEMP 327").
+instruction("QS_Init", 87, "HLOAD TEMP 328 TEMP 0 4").
+instruction("QS_Init", 88, "MOVE TEMP 329 TEMP 328").
+instruction("QS_Init", 89, "MOVE TEMP 330 3").
+instruction("QS_Init", 90, "MOVE TEMP 331 TEMP 330").
+instruction("QS_Init", 91, "MOVE TEMP 332 LT TEMP 331 0").
+instruction("QS_Init", 92, "CJUMP TEMP 332 L54").
+instruction("QS_Init", 93, "ERROR").
+instruction("QS_Init", 94, "L54     NOOP").
+instruction("QS_Init", 95, "HLOAD TEMP 333 TEMP 329 0").
+instruction("QS_Init", 96, "MOVE TEMP 334 1").
+instruction("QS_Init", 97, "MOVE TEMP 335 LT TEMP 331 TEMP 333").
+instruction("QS_Init", 98, "MOVE TEMP 336 MINUS TEMP 334 TEMP 335").
+instruction("QS_Init", 99, "CJUMP TEMP 336 L55").
+instruction("QS_Init", 100, "ERROR").
+instruction("QS_Init", 101, "L55     NOOP").
+instruction("QS_Init", 102, "MOVE TEMP 337 TIMES TEMP 331 4").
+instruction("QS_Init", 103, "MOVE TEMP 338 PLUS TEMP 337 4").
+instruction("QS_Init", 104, "MOVE TEMP 339 PLUS TEMP 329 TEMP 338").
+instruction("QS_Init", 105, "MOVE TEMP 340 18").
+instruction("QS_Init", 106, "MOVE TEMP 341 TEMP 340").
+instruction("QS_Init", 107, "HSTORE TEMP 339 0 TEMP 341").
+instruction("QS_Init", 108, "HLOAD TEMP 342 TEMP 0 4").
+instruction("QS_Init", 109, "MOVE TEMP 343 TEMP 342").
+instruction("QS_Init", 110, "MOVE TEMP 344 4").
+instruction("QS_Init", 111, "MOVE TEMP 345 TEMP 344").
+instruction("QS_Init", 112, "MOVE TEMP 346 LT TEMP 345 0").
+instruction("QS_Init", 113, "CJUMP TEMP 346 L56").
+instruction("QS_Init", 114, "ERROR").
+instruction("QS_Init", 115, "L56     NOOP").
+instruction("QS_Init", 116, "HLOAD TEMP 347 TEMP 343 0").
+instruction("QS_Init", 117, "MOVE TEMP 348 1").
+instruction("QS_Init", 118, "MOVE TEMP 349 LT TEMP 345 TEMP 347").
+instruction("QS_Init", 119, "MOVE TEMP 350 MINUS TEMP 348 TEMP 349").
+instruction("QS_Init", 120, "CJUMP TEMP 350 L57").
+instruction("QS_Init", 121, "ERROR").
+instruction("QS_Init", 122, "L57     NOOP").
+instruction("QS_Init", 123, "MOVE TEMP 351 TIMES TEMP 345 4").
+instruction("QS_Init", 124, "MOVE TEMP 352 PLUS TEMP 351 4").
+instruction("QS_Init", 125, "MOVE TEMP 353 PLUS TEMP 343 TEMP 352").
+instruction("QS_Init", 126, "MOVE TEMP 354 2").
+instruction("QS_Init", 127, "MOVE TEMP 355 TEMP 354").
+instruction("QS_Init", 128, "HSTORE TEMP 353 0 TEMP 355").
+instruction("QS_Init", 129, "HLOAD TEMP 356 TEMP 0 4").
+instruction("QS_Init", 130, "MOVE TEMP 357 TEMP 356").
+instruction("QS_Init", 131, "MOVE TEMP 358 5").
+instruction("QS_Init", 132, "MOVE TEMP 359 TEMP 358").
+instruction("QS_Init", 133, "MOVE TEMP 360 LT TEMP 359 0").
+instruction("QS_Init", 134, "CJUMP TEMP 360 L58").
+instruction("QS_Init", 135, "ERROR").
+instruction("QS_Init", 136, "L58     NOOP").
+instruction("QS_Init", 137, "HLOAD TEMP 361 TEMP 357 0").
+instruction("QS_Init", 138, "MOVE TEMP 362 1").
+instruction("QS_Init", 139, "MOVE TEMP 363 LT TEMP 359 TEMP 361").
+instruction("QS_Init", 140, "MOVE TEMP 364 MINUS TEMP 362 TEMP 363").
+instruction("QS_Init", 141, "CJUMP TEMP 364 L59").
+instruction("QS_Init", 142, "ERROR").
+instruction("QS_Init", 143, "L59     NOOP").
+instruction("QS_Init", 144, "MOVE TEMP 365 TIMES TEMP 359 4").
+instruction("QS_Init", 145, "MOVE TEMP 366 PLUS TEMP 365 4").
+instruction("QS_Init", 146, "MOVE TEMP 367 PLUS TEMP 357 TEMP 366").
+instruction("QS_Init", 147, "MOVE TEMP 368 11").
+instruction("QS_Init", 148, "MOVE TEMP 369 TEMP 368").
+instruction("QS_Init", 149, "HSTORE TEMP 367 0 TEMP 369").
+instruction("QS_Init", 150, "HLOAD TEMP 370 TEMP 0 4").
+instruction("QS_Init", 151, "MOVE TEMP 371 TEMP 370").
+instruction("QS_Init", 152, "MOVE TEMP 372 6").
+instruction("QS_Init", 153, "MOVE TEMP 373 TEMP 372").
+instruction("QS_Init", 154, "MOVE TEMP 374 LT TEMP 373 0").
+instruction("QS_Init", 155, "CJUMP TEMP 374 L60").
+instruction("QS_Init", 156, "ERROR").
+instruction("QS_Init", 157, "L60     NOOP").
+instruction("QS_Init", 158, "HLOAD TEMP 375 TEMP 371 0").
+instruction("QS_Init", 159, "MOVE TEMP 376 1").
+instruction("QS_Init", 160, "MOVE TEMP 377 LT TEMP 373 TEMP 375").
+instruction("QS_Init", 161, "MOVE TEMP 378 MINUS TEMP 376 TEMP 377").
+instruction("QS_Init", 162, "CJUMP TEMP 378 L61").
+instruction("QS_Init", 163, "ERROR").
+instruction("QS_Init", 164, "L61     NOOP").
+instruction("QS_Init", 165, "MOVE TEMP 379 TIMES TEMP 373 4").
+instruction("QS_Init", 166, "MOVE TEMP 380 PLUS TEMP 379 4").
+instruction("QS_Init", 167, "MOVE TEMP 381 PLUS TEMP 371 TEMP 380").
+instruction("QS_Init", 168, "MOVE TEMP 382 6").
+instruction("QS_Init", 169, "MOVE TEMP 383 TEMP 382").
+instruction("QS_Init", 170, "HSTORE TEMP 381 0 TEMP 383").
+instruction("QS_Init", 171, "HLOAD TEMP 384 TEMP 0 4").
+instruction("QS_Init", 172, "MOVE TEMP 385 TEMP 384").
+instruction("QS_Init", 173, "MOVE TEMP 386 7").
+instruction("QS_Init", 174, "MOVE TEMP 387 TEMP 386").
+instruction("QS_Init", 175, "MOVE TEMP 388 LT TEMP 387 0").
+instruction("QS_Init", 176, "CJUMP TEMP 388 L62").
+instruction("QS_Init", 177, "ERROR").
+instruction("QS_Init", 178, "L62     NOOP").
+instruction("QS_Init", 179, "HLOAD TEMP 389 TEMP 385 0").
+instruction("QS_Init", 180, "MOVE TEMP 390 1").
+instruction("QS_Init", 181, "MOVE TEMP 391 LT TEMP 387 TEMP 389").
+instruction("QS_Init", 182, "MOVE TEMP 392 MINUS TEMP 390 TEMP 391").
+instruction("QS_Init", 183, "CJUMP TEMP 392 L63").
+instruction("QS_Init", 184, "ERROR").
+instruction("QS_Init", 185, "L63     NOOP").
+instruction("QS_Init", 186, "MOVE TEMP 393 TIMES TEMP 387 4").
+instruction("QS_Init", 187, "MOVE TEMP 394 PLUS TEMP 393 4").
+instruction("QS_Init", 188, "MOVE TEMP 395 PLUS TEMP 385 TEMP 394").
+instruction("QS_Init", 189, "MOVE TEMP 396 9").
+instruction("QS_Init", 190, "MOVE TEMP 397 TEMP 396").
+instruction("QS_Init", 191, "HSTORE TEMP 395 0 TEMP 397").
+instruction("QS_Init", 192, "HLOAD TEMP 398 TEMP 0 4").
+instruction("QS_Init", 193, "MOVE TEMP 399 TEMP 398").
+instruction("QS_Init", 194, "MOVE TEMP 400 8").
+instruction("QS_Init", 195, "MOVE TEMP 401 TEMP 400").
+instruction("QS_Init", 196, "MOVE TEMP 402 LT TEMP 401 0").
+instruction("QS_Init", 197, "CJUMP TEMP 402 L64").
+instruction("QS_Init", 198, "ERROR").
+instruction("QS_Init", 199, "L64     NOOP").
+instruction("QS_Init", 200, "HLOAD TEMP 403 TEMP 399 0").
+instruction("QS_Init", 201, "MOVE TEMP 404 1").
+instruction("QS_Init", 202, "MOVE TEMP 405 LT TEMP 401 TEMP 403").
+instruction("QS_Init", 203, "MOVE TEMP 406 MINUS TEMP 404 TEMP 405").
+instruction("QS_Init", 204, "CJUMP TEMP 406 L65").
+instruction("QS_Init", 205, "ERROR").
+instruction("QS_Init", 206, "L65     NOOP").
+instruction("QS_Init", 207, "MOVE TEMP 407 TIMES TEMP 401 4").
+instruction("QS_Init", 208, "MOVE TEMP 408 PLUS TEMP 407 4").
+instruction("QS_Init", 209, "MOVE TEMP 409 PLUS TEMP 399 TEMP 408").
+instruction("QS_Init", 210, "MOVE TEMP 410 19").
+instruction("QS_Init", 211, "MOVE TEMP 411 TEMP 410").
+instruction("QS_Init", 212, "HSTORE TEMP 409 0 TEMP 411").
+instruction("QS_Init", 213, "HLOAD TEMP 412 TEMP 0 4").
+instruction("QS_Init", 214, "MOVE TEMP 413 TEMP 412").
+instruction("QS_Init", 215, "MOVE TEMP 414 9").
+instruction("QS_Init", 216, "MOVE TEMP 415 TEMP 414").
+instruction("QS_Init", 217, "MOVE TEMP 416 LT TEMP 415 0").
+instruction("QS_Init", 218, "CJUMP TEMP 416 L66").
+instruction("QS_Init", 219, "ERROR").
+instruction("QS_Init", 220, "L66     NOOP").
+instruction("QS_Init", 221, "HLOAD TEMP 417 TEMP 413 0").
+instruction("QS_Init", 222, "MOVE TEMP 418 1").
+instruction("QS_Init", 223, "MOVE TEMP 419 LT TEMP 415 TEMP 417").
+instruction("QS_Init", 224, "MOVE TEMP 420 MINUS TEMP 418 TEMP 419").
+instruction("QS_Init", 225, "CJUMP TEMP 420 L67").
+instruction("QS_Init", 226, "ERROR").
+instruction("QS_Init", 227, "L67     NOOP").
+instruction("QS_Init", 228, "MOVE TEMP 421 TIMES TEMP 415 4").
+instruction("QS_Init", 229, "MOVE TEMP 422 PLUS TEMP 421 4").
+instruction("QS_Init", 230, "MOVE TEMP 423 PLUS TEMP 413 TEMP 422").
+instruction("QS_Init", 231, "MOVE TEMP 424 5").
+instruction("QS_Init", 232, "MOVE TEMP 425 TEMP 424").
+instruction("QS_Init", 233, "HSTORE TEMP 423 0 TEMP 425").
+instruction("QS_Init", 234, "MOVE TEMP 426 0").
+instruction("QS_Init", 235, "RETURN TEMP 426").

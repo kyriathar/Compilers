@@ -1,0 +1,9 @@
+?- LiveNess(?m,?i,?v).
+
+?- DeadCodeComputation(?m,?i).
+
+?- ConstantPropagation(?m,?i,?var,?value).
+
+?- CopyPropagation(?m,?i,?var,?initVar).
+
+?- BasicBlocksComputation(?method, ?start, ?end).

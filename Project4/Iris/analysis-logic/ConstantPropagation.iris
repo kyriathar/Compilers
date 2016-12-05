@@ -1,0 +1,29 @@
+MultiplePred(?m,?i) :- next(?m,?k,?i),
+		       next(?m,?j,?i), 
+                       ?k!=?j .
+
+SinglePred(?m,?i) :- instruction(?m,?i,?str),
+		     !MultiplePred(?m,?i).	
+
+ConstantsIn(?m,?i,?var,?value) :-  SinglePred(?m,?i),
+			           next(?m,?k,?i),
+			           ConstantsOut(?m,?k,?var,?value).	  
+
+
+ConstantsIn(?m,?i,?var,?value) :-  MultiplePred(?m,?i),
+			           next(?m,?prev1,?i),
+				   next(?m,?prev2,?i),	
+			           ConstantsOut(?m,?prev1,?var,?value),
+				   ConstantsOut(?m,?prev2,?var,?value),
+				   ?prev1!=?prev2.	  
+
+ConstantsOut(?m,?i,?var,?value) :- ConstantsIn(?m,?i,?var,?value),
+				   !varDef(?m,?i,?var).
+
+ConstantsOut(?m,?i,?var,?value) :- varDef(?m,?i,?var),
+				   constMove(?m,?i,?var,?value).
+
+ConstantsOut(?m,?i,?var,?value) :- varMove(?m,?i,?var,?constVar), 	
+				   ConstantsIn(?m,?i,?constVar,?value).
+	
+ConstantPropagation(?m,?i,?var,?value) :- ConstantsOut(?m,?i,?var,?value).

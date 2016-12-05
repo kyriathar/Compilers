@@ -1,0 +1,43 @@
+MultiplePred(?m,?i) :- next(?m,?k,?i),
+		       next(?m,?j,?i), 
+                       ?k!=?j .
+
+SinglePred(?m,?i) :- instruction(?m,?i,?str),
+		     !MultiplePred(?m,?i).
+
+cJumpInstruction(?m, ?i) :- next(?m, ?i, ?j),
+                            next(?m, ?i, ?k),
+                            ?i+1 = ?k,
+                            ?j != ?k.
+jumpInstruction(?m, ?i) :- next(?m, ?i, ?j),
+                           ?i+1 = ?k,
+                           ?j != ?k,
+                           !next(?m, ?i, ?k).
+
+Label(?m,?i) :- next(?m,  ?prev,  ?i),
+                !?prev+1 = ?i.
+
+RestrictedNext(?m,?i,?j) :- next(?m,?i,?j),
+                            !cJumpInstruction(?m, ?i),
+                            !jumpInstruction(?m, ?i),
+                            !Label(?m,?j).
+
+Reachable(?m,?i,?i) :- instruction(?m,  ?i, ?str). 
+Reachable(?m,?i,?j) :- RestrictedNext(?m,?i,?j).
+Reachable(?m,?i,?j) :- RestrictedNext(?m,?i,?k),
+                       Reachable(?m,?k,?j).
+
+basicBlockStart(?method, 1) :- instruction(?method,  1, ?str).
+basicBlockStart(?method, ?start) :- Label(?method,?start) . 
+basicBlockStart(?method, ?start) :- next(?method,?prev,?start),
+                                    cJumpInstruction(?method, ?prev).
+
+BasicBlocksComputation(?method, ?start, ?end) :- basicBlockStart(?method, ?start),
+                                        Reachable(?method,?start,?end),
+                                        next(?method,?end,?afterEnd),
+                                        Label(?method,?afterEnd).
+
+BasicBlocksComputation(?method, ?start, ?end) :- basicBlockStart(?method, ?start),
+                                        Reachable(?method,?start,?end),
+                                        !next(?method,?end,?afterEnd).
+

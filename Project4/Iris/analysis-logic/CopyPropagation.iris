@@ -1,0 +1,30 @@
+MultiplePred(?m,?i) :- next(?m,?k,?i),
+		       next(?m,?j,?i), 
+                       ?k!=?j .
+
+SinglePred(?m,?i) :- instruction(?m,?i,?str),
+		     !MultiplePred(?m,?i).	
+
+CopiesIn(?m,?i,?var,?initVar) :-  SinglePred(?m,?i),
+			          next(?m,?k,?i),
+			          CopiesOut(?m,?k,?var,?initVar).	  
+
+
+CopiesIn(?m,?i,?var,?initVar) :-  MultiplePred(?m,?i),
+			          next(?m,?prev1,?i),
+				  next(?m,?prev2,?i),	
+			          CopiesOut(?m,?prev1,?var,?initVar),
+				  CopiesOut(?m,?prev2,?var,?initVar),
+				  ?prev1!=?prev2.	  
+
+CopiesOut(?m,?i,?var,?initVar) :- CopiesIn(?m,?i,?var,?initVar),
+				!varDef(?m,?i,?var).
+
+CopiesOut(?m,?i,?var,?initVar) :- varDef(?m,?i,?var),
+				varMove(?m,?i,?var,?initVar).
+
+CopiesOut(?m,?i,?var,?initVar) :- varMove(?m,?i,?var,?midVar), 	
+				CopiesIn(?m,?i,?midVar,?initVar).
+	
+
+CopyPropagation(?m,?i,?var,?initVar) :- CopiesOut(?m,?i,?var,?initVar).

@@ -1,0 +1,61 @@
+name()  {
+    "John"
+}
+
+name()
+
+surname() {
+    "Doe"
+}
+
+fullname(first_name, sep, last_name) {
+    first_name + sep + last_name
+}
+
+surname()
+fullname(name(), "    ", surname())
+
+
+name() {
+    "John"
+}
+
+repeat(x) {
+    x + x
+}
+
+cond_repeat(c, x) {
+    if (c = "yes")
+        repeat(x)
+    else
+        x
+}
+
+cond_repeat("yes", name())
+cond_repeat("no", "Jane")
+
+may_be_gerund(x) {
+    if ("ing" in x)
+        "yes"
+    else
+        "no"
+}
+
+repeat(x) {
+    x + x
+}
+
+cond_repeat_gerund(c, x) {
+    if (c = "yes")
+        if (may_be_gerund(x) = "yes")
+            repeat(x)
+        else
+            x
+    else
+        x
+
+}
+
+cond_repeat_gerund("yes", "running")
+cond_repeat_gerund("yes", "run")
+cond_repeat_gerund("no", "running")

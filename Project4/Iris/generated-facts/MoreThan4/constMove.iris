@@ -1,0 +1,14 @@
+constMove("MAIN", 1, "TEMP 26", "MT4vTable").
+constMove("MAIN", 4, "TEMP 28", "MT4_Start").
+constMove("MAIN", 6, "TEMP 29", "MT4_Change").
+constMove("MAIN", 9, "TEMP 31", "MT4vTable").
+constMove("MAIN", 11, "TEMP 33", 4).
+constMove("MAIN", 13, "TEMP 34", 4).
+constMove("MAIN", 17, "TEMP 37", 0).
+constMove("MAIN", 26, "TEMP 41", 1).
+constMove("MAIN", 27, "TEMP 42", 2).
+constMove("MAIN", 28, "TEMP 43", 3).
+constMove("MAIN", 29, "TEMP 44", 4).
+constMove("MAIN", 30, "TEMP 45", 5).
+constMove("MAIN", 31, "TEMP 46", 6).
+constMove("MT4_Change", 7, "TEMP 53", 0).

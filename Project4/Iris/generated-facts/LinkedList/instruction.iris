@@ -1,0 +1,621 @@
+instruction("MAIN",  1, "MOVE TEMP 23 ElementvTable").
+instruction("MAIN",  2, "MOVE TEMP 24 HALLOCATE 24").
+instruction("MAIN",  3, "HSTORE TEMP 23 0 TEMP 24").
+instruction("MAIN",  4, "MOVE TEMP 25 Element_Init").
+instruction("MAIN",  5, "HSTORE TEMP 24 0 TEMP 25").
+instruction("MAIN",  6, "MOVE TEMP 26 Element_GetAge").
+instruction("MAIN",  7, "HSTORE TEMP 24 4 TEMP 26").
+instruction("MAIN",  8, "MOVE TEMP 27 Element_GetSalary").
+instruction("MAIN",  9, "HSTORE TEMP 24 8 TEMP 27").
+instruction("MAIN", 10, "MOVE TEMP 28 Element_GetMarried").
+instruction("MAIN", 11, "HSTORE TEMP 24 12 TEMP 28").
+instruction("MAIN", 12, "MOVE TEMP 29 Element_Equal").
+instruction("MAIN", 13, "HSTORE TEMP 24 16 TEMP 29").
+instruction("MAIN", 14, "MOVE TEMP 30 Element_Compare").
+instruction("MAIN", 15, "HSTORE TEMP 24 20 TEMP 30").
+instruction("MAIN", 16, "MOVE TEMP 31 ListvTable").
+instruction("MAIN", 17, "MOVE TEMP 32 HALLOCATE 40").
+instruction("MAIN", 18, "HSTORE TEMP 31 0 TEMP 32").
+instruction("MAIN", 19, "MOVE TEMP 33 List_Init").
+instruction("MAIN", 20, "HSTORE TEMP 32 0 TEMP 33").
+instruction("MAIN", 21, "MOVE TEMP 34 List_InitNew").
+instruction("MAIN", 22, "HSTORE TEMP 32 4 TEMP 34").
+instruction("MAIN", 23, "MOVE TEMP 35 List_Insert").
+instruction("MAIN", 24, "HSTORE TEMP 32 8 TEMP 35").
+instruction("MAIN", 25, "MOVE TEMP 36 List_SetNext").
+instruction("MAIN", 26, "HSTORE TEMP 32 12 TEMP 36").
+instruction("MAIN", 27, "MOVE TEMP 37 List_Delete").
+instruction("MAIN", 28, "HSTORE TEMP 32 16 TEMP 37").
+instruction("MAIN", 29, "MOVE TEMP 38 List_Search").
+instruction("MAIN", 30, "HSTORE TEMP 32 20 TEMP 38").
+instruction("MAIN", 31, "MOVE TEMP 39 List_GetEnd").
+instruction("MAIN", 32, "HSTORE TEMP 32 24 TEMP 39").
+instruction("MAIN", 33, "MOVE TEMP 40 List_GetElem").
+instruction("MAIN", 34, "HSTORE TEMP 32 28 TEMP 40").
+instruction("MAIN", 35, "MOVE TEMP 41 List_GetNext").
+instruction("MAIN", 36, "HSTORE TEMP 32 32 TEMP 41").
+instruction("MAIN", 37, "MOVE TEMP 42 List_Print").
+instruction("MAIN", 38, "HSTORE TEMP 32 36 TEMP 42").
+instruction("MAIN", 39, "MOVE TEMP 43 LLvTable").
+instruction("MAIN", 40, "MOVE TEMP 44 HALLOCATE 4").
+instruction("MAIN", 41, "HSTORE TEMP 43 0 TEMP 44").
+instruction("MAIN", 42, "MOVE TEMP 45 LL_Start").
+instruction("MAIN", 43, "HSTORE TEMP 44 0 TEMP 45").
+instruction("MAIN", 44, "MOVE TEMP 46 HALLOCATE 4").
+instruction("MAIN", 45, "MOVE TEMP 47 LLvTable").
+instruction("MAIN", 46, "HLOAD TEMP 48 TEMP 47 0").
+instruction("MAIN", 47, "MOVE TEMP 49 4").
+instruction("MAIN", 48, "L1     NOOP").
+instruction("MAIN", 49, "MOVE TEMP 50 4").
+instruction("MAIN", 50, "MOVE TEMP 51 LT TEMP 49 TEMP 50").
+instruction("MAIN", 51, "CJUMP TEMP 51 L2").
+instruction("MAIN", 52, "MOVE TEMP 52 PLUS TEMP 46 TEMP 49").
+instruction("MAIN", 53, "MOVE TEMP 53 0").
+instruction("MAIN", 54, "HSTORE TEMP 52 0 TEMP 53").
+instruction("MAIN", 55, "MOVE TEMP 49 PLUS TEMP 49 4").
+instruction("MAIN", 56, "JUMP L1").
+instruction("MAIN", 57, "L2     NOOP").
+instruction("MAIN", 58, "HSTORE TEMP 46 0 TEMP 48").
+instruction("MAIN", 59, "MOVE TEMP 54 TEMP 46").
+instruction("MAIN", 60, "HLOAD TEMP 55 TEMP 54 0").
+instruction("MAIN", 61, "HLOAD TEMP 56 TEMP 55 0").
+instruction("MAIN", 62, "MOVE TEMP 57 CALL TEMP 56( TEMP 54 )").
+instruction("MAIN", 63, "PRINT TEMP 57").
+instruction("Element_Init",  1, "MOVE TEMP 58 PLUS TEMP 0 4").
+instruction("Element_Init",  2, "HSTORE TEMP 58 0 TEMP 1").
+instruction("Element_Init",  3, "MOVE TEMP 59 PLUS TEMP 0 8").
+instruction("Element_Init",  4, "HSTORE TEMP 59 0 TEMP 2").
+instruction("Element_Init",  5, "MOVE TEMP 60 PLUS TEMP 0 12").
+instruction("Element_Init",  6, "HSTORE TEMP 60 0 TEMP 3").
+instruction("Element_Init",  7, "MOVE TEMP 61 1").
+instruction("Element_Init",  8, "RETURN TEMP 61").
+instruction("Element_GetAge",  1, "HLOAD TEMP 62 TEMP 0 4").
+instruction("Element_GetAge",  2, "RETURN TEMP 62").
+instruction("Element_GetSalary",  1, "HLOAD TEMP 63 TEMP 0 8").
+instruction("Element_GetSalary",  2, "RETURN TEMP 63").
+instruction("Element_GetMarried",  1, "HLOAD TEMP 64 TEMP 0 12").
+instruction("Element_GetMarried",  2, "RETURN TEMP 64").
+instruction("Element_Equal",  1, "MOVE TEMP 66 1").
+instruction("Element_Equal",  2, "MOVE TEMP 65 TEMP 66").
+instruction("Element_Equal",  3, "MOVE TEMP 68 TEMP 1").
+instruction("Element_Equal",  4, "HLOAD TEMP 69 TEMP 68 0").
+instruction("Element_Equal",  5, "HLOAD TEMP 70 TEMP 69 4").
+instruction("Element_Equal",  6, "MOVE TEMP 71 CALL TEMP 70( TEMP 68 )").
+instruction("Element_Equal",  7, "MOVE TEMP 67 TEMP 71").
+instruction("Element_Equal",  8, "MOVE TEMP 74 TEMP 0").
+instruction("Element_Equal",  9, "HLOAD TEMP 75 TEMP 74 0").
+instruction("Element_Equal", 10, "HLOAD TEMP 76 TEMP 75 20").
+instruction("Element_Equal", 11, "HLOAD TEMP 77 TEMP 0 4").
+instruction("Element_Equal", 12, "MOVE TEMP 78 CALL TEMP 76( TEMP 74 TEMP 67 TEMP 77 )").
+instruction("Element_Equal", 13, "MOVE TEMP 72 1").
+instruction("Element_Equal", 14, "MOVE TEMP 73 MINUS TEMP 72 TEMP 78").
+instruction("Element_Equal", 15, "CJUMP TEMP 73 L3").
+instruction("Element_Equal", 16, "MOVE TEMP 79 0").
+instruction("Element_Equal", 17, "MOVE TEMP 65 TEMP 79").
+instruction("Element_Equal", 18, "JUMP L4").
+instruction("Element_Equal", 19, "L3     NOOP").
+instruction("Element_Equal", 20, "MOVE TEMP 81 TEMP 1").
+instruction("Element_Equal", 21, "HLOAD TEMP 82 TEMP 81 0").
+instruction("Element_Equal", 22, "HLOAD TEMP 83 TEMP 82 8").
+instruction("Element_Equal", 23, "MOVE TEMP 84 CALL TEMP 83( TEMP 81 )").
+instruction("Element_Equal", 24, "MOVE TEMP 80 TEMP 84").
+instruction("Element_Equal", 25, "MOVE TEMP 87 TEMP 0").
+instruction("Element_Equal", 26, "HLOAD TEMP 88 TEMP 87 0").
+instruction("Element_Equal", 27, "HLOAD TEMP 89 TEMP 88 20").
+instruction("Element_Equal", 28, "HLOAD TEMP 90 TEMP 0 8").
+instruction("Element_Equal", 29, "MOVE TEMP 91 CALL TEMP 89( TEMP 87 TEMP 80 TEMP 90 )").
+instruction("Element_Equal", 30, "MOVE TEMP 85 1").
+instruction("Element_Equal", 31, "MOVE TEMP 86 MINUS TEMP 85 TEMP 91").
+instruction("Element_Equal", 32, "CJUMP TEMP 86 L5").
+instruction("Element_Equal", 33, "MOVE TEMP 92 0").
+instruction("Element_Equal", 34, "MOVE TEMP 65 TEMP 92").
+instruction("Element_Equal", 35, "JUMP L6").
+instruction("Element_Equal", 36, "L5     NOOP").
+instruction("Element_Equal", 37, "HLOAD TEMP 93 TEMP 0 12").
+instruction("Element_Equal", 38, "CJUMP TEMP 93 L7").
+instruction("Element_Equal", 39, "MOVE TEMP 96 TEMP 1").
+instruction("Element_Equal", 40, "HLOAD TEMP 97 TEMP 96 0").
+instruction("Element_Equal", 41, "HLOAD TEMP 98 TEMP 97 12").
+instruction("Element_Equal", 42, "MOVE TEMP 99 CALL TEMP 98( TEMP 96 )").
+instruction("Element_Equal", 43, "MOVE TEMP 94 1").
+instruction("Element_Equal", 44, "MOVE TEMP 95 MINUS TEMP 94 TEMP 99").
+instruction("Element_Equal", 45, "CJUMP TEMP 95 L9").
+instruction("Element_Equal", 46, "MOVE TEMP 100 0").
+instruction("Element_Equal", 47, "MOVE TEMP 65 TEMP 100").
+instruction("Element_Equal", 48, "JUMP L10").
+instruction("Element_Equal", 49, "L9     NOOP").
+instruction("Element_Equal", 50, "MOVE TEMP 102 0").
+instruction("Element_Equal", 51, "MOVE TEMP 101 TEMP 102").
+instruction("Element_Equal", 52, "L10     NOOP").
+instruction("Element_Equal", 53, "JUMP L8").
+instruction("Element_Equal", 54, "L7     NOOP").
+instruction("Element_Equal", 55, "MOVE TEMP 103 TEMP 1").
+instruction("Element_Equal", 56, "HLOAD TEMP 104 TEMP 103 0").
+instruction("Element_Equal", 57, "HLOAD TEMP 105 TEMP 104 12").
+instruction("Element_Equal", 58, "MOVE TEMP 106 CALL TEMP 105( TEMP 103 )").
+instruction("Element_Equal", 59, "CJUMP TEMP 106 L11").
+instruction("Element_Equal", 60, "MOVE TEMP 107 0").
+instruction("Element_Equal", 61, "MOVE TEMP 65 TEMP 107").
+instruction("Element_Equal", 62, "JUMP L12").
+instruction("Element_Equal", 63, "L11     NOOP").
+instruction("Element_Equal", 64, "MOVE TEMP 108 0").
+instruction("Element_Equal", 65, "MOVE TEMP 101 TEMP 108").
+instruction("Element_Equal", 66, "L12     NOOP").
+instruction("Element_Equal", 67, "L8     NOOP").
+instruction("Element_Equal", 68, "L6     NOOP").
+instruction("Element_Equal", 69, "L4     NOOP").
+instruction("Element_Equal", 70, "RETURN TEMP 65").
+instruction("Element_Compare",  1, "MOVE TEMP 110 0").
+instruction("Element_Compare",  2, "MOVE TEMP 109 TEMP 110").
+instruction("Element_Compare",  3, "MOVE TEMP 112 1").
+instruction("Element_Compare",  4, "MOVE TEMP 113 PLUS TEMP 2 TEMP 112").
+instruction("Element_Compare",  5, "MOVE TEMP 111 TEMP 113").
+instruction("Element_Compare",  6, "MOVE TEMP 114 LT TEMP 1 TEMP 2").
+instruction("Element_Compare",  7, "CJUMP TEMP 114 L13").
+instruction("Element_Compare",  8, "MOVE TEMP 115 0").
+instruction("Element_Compare",  9, "MOVE TEMP 109 TEMP 115").
+instruction("Element_Compare", 10, "JUMP L14").
+instruction("Element_Compare", 11, "L13     NOOP").
+instruction("Element_Compare", 12, "MOVE TEMP 118 LT TEMP 1 TEMP 111").
+instruction("Element_Compare", 13, "MOVE TEMP 116 1").
+instruction("Element_Compare", 14, "MOVE TEMP 117 MINUS TEMP 116 TEMP 118").
+instruction("Element_Compare", 15, "CJUMP TEMP 117 L15").
+instruction("Element_Compare", 16, "MOVE TEMP 119 0").
+instruction("Element_Compare", 17, "MOVE TEMP 109 TEMP 119").
+instruction("Element_Compare", 18, "JUMP L16").
+instruction("Element_Compare", 19, "L15     NOOP").
+instruction("Element_Compare", 20, "MOVE TEMP 120 1").
+instruction("Element_Compare", 21, "MOVE TEMP 109 TEMP 120").
+instruction("Element_Compare", 22, "L16     NOOP").
+instruction("Element_Compare", 23, "L14     NOOP").
+instruction("Element_Compare", 24, "RETURN TEMP 109").
+instruction("List_Init",  1, "MOVE TEMP 121 PLUS TEMP 0 12").
+instruction("List_Init",  2, "MOVE TEMP 122 1").
+instruction("List_Init",  3, "HSTORE TEMP 121 0 TEMP 122").
+instruction("List_Init",  4, "MOVE TEMP 123 1").
+instruction("List_Init",  5, "RETURN TEMP 123").
+instruction("List_InitNew",  1, "MOVE TEMP 124 PLUS TEMP 0 12").
+instruction("List_InitNew",  2, "HSTORE TEMP 124 0 TEMP 3").
+instruction("List_InitNew",  3, "MOVE TEMP 125 PLUS TEMP 0 4").
+instruction("List_InitNew",  4, "HSTORE TEMP 125 0 TEMP 1").
+instruction("List_InitNew",  5, "MOVE TEMP 126 PLUS TEMP 0 8").
+instruction("List_InitNew",  6, "HSTORE TEMP 126 0 TEMP 2").
+instruction("List_InitNew",  7, "MOVE TEMP 127 1").
+instruction("List_InitNew",  8, "RETURN TEMP 127").
+instruction("List_Insert",  1, "MOVE TEMP 128 TEMP 0").
+instruction("List_Insert",  2, "MOVE TEMP 130 HALLOCATE 16").
+instruction("List_Insert",  3, "MOVE TEMP 131 ListvTable").
+instruction("List_Insert",  4, "HLOAD TEMP 132 TEMP 131 0").
+instruction("List_Insert",  5, "MOVE TEMP 133 4").
+instruction("List_Insert",  6, "L17     NOOP").
+instruction("List_Insert",  7, "MOVE TEMP 134 16").
+instruction("List_Insert",  8, "MOVE TEMP 135 LT TEMP 133 TEMP 134").
+instruction("List_Insert",  9, "CJUMP TEMP 135 L18").
+instruction("List_Insert", 10, "MOVE TEMP 136 PLUS TEMP 130 TEMP 133").
+instruction("List_Insert", 11, "MOVE TEMP 137 0").
+instruction("List_Insert", 12, "HSTORE TEMP 136 0 TEMP 137").
+instruction("List_Insert", 13, "MOVE TEMP 133 PLUS TEMP 133 4").
+instruction("List_Insert", 14, "JUMP L17").
+instruction("List_Insert", 15, "L18     NOOP").
+instruction("List_Insert", 16, "HSTORE TEMP 130 0 TEMP 132").
+instruction("List_Insert", 17, "MOVE TEMP 129 TEMP 130").
+instruction("List_Insert", 18, "MOVE TEMP 139 TEMP 129").
+instruction("List_Insert", 19, "HLOAD TEMP 140 TEMP 139 0").
+instruction("List_Insert", 20, "HLOAD TEMP 141 TEMP 140 4").
+instruction("List_Insert", 21, "MOVE TEMP 142 0").
+instruction("List_Insert", 22, "MOVE TEMP 143 CALL TEMP 141( TEMP 139 TEMP 1 TEMP 128 TEMP 142 )").
+instruction("List_Insert", 23, "MOVE TEMP 138 TEMP 143").
+instruction("List_Insert", 24, "RETURN TEMP 129").
+instruction("List_SetNext",  1, "MOVE TEMP 144 PLUS TEMP 0 8").
+instruction("List_SetNext",  2, "HSTORE TEMP 144 0 TEMP 1").
+instruction("List_SetNext",  3, "MOVE TEMP 145 1").
+instruction("List_SetNext",  4, "RETURN TEMP 145").
+instruction("List_Delete",  1, "MOVE TEMP 146 TEMP 0").
+instruction("List_Delete",  2, "MOVE TEMP 148 0").
+instruction("List_Delete",  3, "MOVE TEMP 147 TEMP 148").
+instruction("List_Delete",  4, "MOVE TEMP 150 0").
+instruction("List_Delete",  5, "MOVE TEMP 151 1").
+instruction("List_Delete",  6, "MOVE TEMP 152 MINUS TEMP 150 TEMP 151").
+instruction("List_Delete",  7, "MOVE TEMP 149 TEMP 152").
+instruction("List_Delete",  8, "MOVE TEMP 153 TEMP 0").
+instruction("List_Delete",  9, "MOVE TEMP 154 TEMP 0").
+instruction("List_Delete", 10, "HLOAD TEMP 156 TEMP 0 12").
+instruction("List_Delete", 11, "MOVE TEMP 155 TEMP 156").
+instruction("List_Delete", 12, "HLOAD TEMP 158 TEMP 0 4").
+instruction("List_Delete", 13, "MOVE TEMP 157 TEMP 158").
+instruction("List_Delete", 14, "L19     NOOP").
+instruction("List_Delete", 15, "MOVE TEMP 160 1").
+instruction("List_Delete", 16, "MOVE TEMP 161 MINUS TEMP 160 TEMP 155").
+instruction("List_Delete", 17, "MOVE TEMP 159 TEMP 161").
+instruction("List_Delete", 18, "CJUMP TEMP 159 L21").
+instruction("List_Delete", 19, "MOVE TEMP 162 1").
+instruction("List_Delete", 20, "MOVE TEMP 163 MINUS TEMP 162 TEMP 147").
+instruction("List_Delete", 21, "MOVE TEMP 159 TEMP 163").
+instruction("List_Delete", 22, "L21     NOOP").
+instruction("List_Delete", 23, "CJUMP TEMP 159 L20").
+instruction("List_Delete", 24, "MOVE TEMP 164 TEMP 1").
+instruction("List_Delete", 25, "HLOAD TEMP 165 TEMP 164 0").
+instruction("List_Delete", 26, "HLOAD TEMP 166 TEMP 165 16").
+instruction("List_Delete", 27, "MOVE TEMP 167 CALL TEMP 166( TEMP 164 TEMP 157 )").
+instruction("List_Delete", 28, "CJUMP TEMP 167 L22").
+instruction("List_Delete", 29, "MOVE TEMP 168 1").
+instruction("List_Delete", 30, "MOVE TEMP 147 TEMP 168").
+instruction("List_Delete", 31, "MOVE TEMP 169 0").
+instruction("List_Delete", 32, "MOVE TEMP 170 LT TEMP 149 TEMP 169").
+instruction("List_Delete", 33, "CJUMP TEMP 170 L24").
+instruction("List_Delete", 34, "MOVE TEMP 171 TEMP 153").
+instruction("List_Delete", 35, "HLOAD TEMP 172 TEMP 171 0").
+instruction("List_Delete", 36, "HLOAD TEMP 173 TEMP 172 32").
+instruction("List_Delete", 37, "MOVE TEMP 174 CALL TEMP 173( TEMP 171 )").
+instruction("List_Delete", 38, "MOVE TEMP 146 TEMP 174").
+instruction("List_Delete", 39, "JUMP L25").
+instruction("List_Delete", 40, "L24     NOOP").
+instruction("List_Delete", 41, "MOVE TEMP 175 0").
+instruction("List_Delete", 42, "MOVE TEMP 176 555").
+instruction("List_Delete", 43, "MOVE TEMP 177 MINUS TEMP 175 TEMP 176").
+instruction("List_Delete", 44, "PRINT TEMP 177").
+instruction("List_Delete", 45, "MOVE TEMP 179 TEMP 154").
+instruction("List_Delete", 46, "HLOAD TEMP 180 TEMP 179 0").
+instruction("List_Delete", 47, "HLOAD TEMP 181 TEMP 180 12").
+instruction("List_Delete", 48, "MOVE TEMP 182 TEMP 153").
+instruction("List_Delete", 49, "HLOAD TEMP 183 TEMP 182 0").
+instruction("List_Delete", 50, "HLOAD TEMP 184 TEMP 183 32").
+instruction("List_Delete", 51, "MOVE TEMP 185 CALL TEMP 184( TEMP 182 )").
+instruction("List_Delete", 52, "MOVE TEMP 186 CALL TEMP 181( TEMP 179 TEMP 185 )").
+instruction("List_Delete", 53, "MOVE TEMP 178 TEMP 186").
+instruction("List_Delete", 54, "MOVE TEMP 187 0").
+instruction("List_Delete", 55, "MOVE TEMP 188 555").
+instruction("List_Delete", 56, "MOVE TEMP 189 MINUS TEMP 187 TEMP 188").
+instruction("List_Delete", 57, "PRINT TEMP 189").
+instruction("List_Delete", 58, "L25     NOOP").
+instruction("List_Delete", 59, "JUMP L23").
+instruction("List_Delete", 60, "L22     NOOP").
+instruction("List_Delete", 61, "MOVE TEMP 191 0").
+instruction("List_Delete", 62, "MOVE TEMP 190 TEMP 191").
+instruction("List_Delete", 63, "L23     NOOP").
+instruction("List_Delete", 64, "MOVE TEMP 192 1").
+instruction("List_Delete", 65, "MOVE TEMP 193 MINUS TEMP 192 TEMP 147").
+instruction("List_Delete", 66, "CJUMP TEMP 193 L26").
+instruction("List_Delete", 67, "MOVE TEMP 154 TEMP 153").
+instruction("List_Delete", 68, "MOVE TEMP 194 TEMP 153").
+instruction("List_Delete", 69, "HLOAD TEMP 195 TEMP 194 0").
+instruction("List_Delete", 70, "HLOAD TEMP 196 TEMP 195 32").
+instruction("List_Delete", 71, "MOVE TEMP 197 CALL TEMP 196( TEMP 194 )").
+instruction("List_Delete", 72, "MOVE TEMP 153 TEMP 197").
+instruction("List_Delete", 73, "MOVE TEMP 198 TEMP 153").
+instruction("List_Delete", 74, "HLOAD TEMP 199 TEMP 198 0").
+instruction("List_Delete", 75, "HLOAD TEMP 200 TEMP 199 24").
+instruction("List_Delete", 76, "MOVE TEMP 201 CALL TEMP 200( TEMP 198 )").
+instruction("List_Delete", 77, "MOVE TEMP 155 TEMP 201").
+instruction("List_Delete", 78, "MOVE TEMP 202 TEMP 153").
+instruction("List_Delete", 79, "HLOAD TEMP 203 TEMP 202 0").
+instruction("List_Delete", 80, "HLOAD TEMP 204 TEMP 203 28").
+instruction("List_Delete", 81, "MOVE TEMP 205 CALL TEMP 204( TEMP 202 )").
+instruction("List_Delete", 82, "MOVE TEMP 157 TEMP 205").
+instruction("List_Delete", 83, "MOVE TEMP 206 1").
+instruction("List_Delete", 84, "MOVE TEMP 149 TEMP 206").
+instruction("List_Delete", 85, "JUMP L27").
+instruction("List_Delete", 86, "L26     NOOP").
+instruction("List_Delete", 87, "MOVE TEMP 207 0").
+instruction("List_Delete", 88, "MOVE TEMP 190 TEMP 207").
+instruction("List_Delete", 89, "L27     NOOP").
+instruction("List_Delete", 90, "JUMP L19").
+instruction("List_Delete", 91, "L20     NOOP").
+instruction("List_Delete", 92, "RETURN TEMP 146").
+instruction("List_Search",  1, "MOVE TEMP 209 0").
+instruction("List_Search",  2, "MOVE TEMP 208 TEMP 209").
+instruction("List_Search",  3, "MOVE TEMP 210 TEMP 0").
+instruction("List_Search",  4, "HLOAD TEMP 212 TEMP 0 12").
+instruction("List_Search",  5, "MOVE TEMP 211 TEMP 212").
+instruction("List_Search",  6, "HLOAD TEMP 214 TEMP 0 4").
+instruction("List_Search",  7, "MOVE TEMP 213 TEMP 214").
+instruction("List_Search",  8, "L28     NOOP").
+instruction("List_Search",  9, "MOVE TEMP 215 1").
+instruction("List_Search", 10, "MOVE TEMP 216 MINUS TEMP 215 TEMP 211").
+instruction("List_Search", 11, "CJUMP TEMP 216 L29").
+instruction("List_Search", 12, "MOVE TEMP 217 TEMP 1").
+instruction("List_Search", 13, "HLOAD TEMP 218 TEMP 217 0").
+instruction("List_Search", 14, "HLOAD TEMP 219 TEMP 218 16").
+instruction("List_Search", 15, "MOVE TEMP 220 CALL TEMP 219( TEMP 217 TEMP 213 )").
+instruction("List_Search", 16, "CJUMP TEMP 220 L30").
+instruction("List_Search", 17, "MOVE TEMP 221 1").
+instruction("List_Search", 18, "MOVE TEMP 208 TEMP 221").
+instruction("List_Search", 19, "JUMP L31").
+instruction("List_Search", 20, "L30     NOOP").
+instruction("List_Search", 21, "MOVE TEMP 223 0").
+instruction("List_Search", 22, "MOVE TEMP 222 TEMP 223").
+instruction("List_Search", 23, "L31     NOOP").
+instruction("List_Search", 24, "MOVE TEMP 224 TEMP 210").
+instruction("List_Search", 25, "HLOAD TEMP 225 TEMP 224 0").
+instruction("List_Search", 26, "HLOAD TEMP 226 TEMP 225 32").
+instruction("List_Search", 27, "MOVE TEMP 227 CALL TEMP 226( TEMP 224 )").
+instruction("List_Search", 28, "MOVE TEMP 210 TEMP 227").
+instruction("List_Search", 29, "MOVE TEMP 228 TEMP 210").
+instruction("List_Search", 30, "HLOAD TEMP 229 TEMP 228 0").
+instruction("List_Search", 31, "HLOAD TEMP 230 TEMP 229 24").
+instruction("List_Search", 32, "MOVE TEMP 231 CALL TEMP 230( TEMP 228 )").
+instruction("List_Search", 33, "MOVE TEMP 211 TEMP 231").
+instruction("List_Search", 34, "MOVE TEMP 232 TEMP 210").
+instruction("List_Search", 35, "HLOAD TEMP 233 TEMP 232 0").
+instruction("List_Search", 36, "HLOAD TEMP 234 TEMP 233 28").
+instruction("List_Search", 37, "MOVE TEMP 235 CALL TEMP 234( TEMP 232 )").
+instruction("List_Search", 38, "MOVE TEMP 213 TEMP 235").
+instruction("List_Search", 39, "JUMP L28").
+instruction("List_Search", 40, "L29     NOOP").
+instruction("List_Search", 41, "RETURN TEMP 208").
+instruction("List_GetEnd",  1, "HLOAD TEMP 236 TEMP 0 12").
+instruction("List_GetEnd",  2, "RETURN TEMP 236").
+instruction("List_GetElem",  1, "HLOAD TEMP 237 TEMP 0 4").
+instruction("List_GetElem",  2, "RETURN TEMP 237").
+instruction("List_GetNext",  1, "HLOAD TEMP 238 TEMP 0 8").
+instruction("List_GetNext",  2, "RETURN TEMP 238").
+instruction("List_Print",  1, "MOVE TEMP 239 TEMP 0").
+instruction("List_Print",  2, "HLOAD TEMP 241 TEMP 0 12").
+instruction("List_Print",  3, "MOVE TEMP 240 TEMP 241").
+instruction("List_Print",  4, "HLOAD TEMP 243 TEMP 0 4").
+instruction("List_Print",  5, "MOVE TEMP 242 TEMP 243").
+instruction("List_Print",  6, "L32     NOOP").
+instruction("List_Print",  7, "MOVE TEMP 244 1").
+instruction("List_Print",  8, "MOVE TEMP 245 MINUS TEMP 244 TEMP 240").
+instruction("List_Print",  9, "CJUMP TEMP 245 L33").
+instruction("List_Print", 10, "MOVE TEMP 246 TEMP 242").
+instruction("List_Print", 11, "HLOAD TEMP 247 TEMP 246 0").
+instruction("List_Print", 12, "HLOAD TEMP 248 TEMP 247 4").
+instruction("List_Print", 13, "MOVE TEMP 249 CALL TEMP 248( TEMP 246 )").
+instruction("List_Print", 14, "PRINT TEMP 249").
+instruction("List_Print", 15, "MOVE TEMP 250 TEMP 239").
+instruction("List_Print", 16, "HLOAD TEMP 251 TEMP 250 0").
+instruction("List_Print", 17, "HLOAD TEMP 252 TEMP 251 32").
+instruction("List_Print", 18, "MOVE TEMP 253 CALL TEMP 252( TEMP 250 )").
+instruction("List_Print", 19, "MOVE TEMP 239 TEMP 253").
+instruction("List_Print", 20, "MOVE TEMP 254 TEMP 239").
+instruction("List_Print", 21, "HLOAD TEMP 255 TEMP 254 0").
+instruction("List_Print", 22, "HLOAD TEMP 256 TEMP 255 24").
+instruction("List_Print", 23, "MOVE TEMP 257 CALL TEMP 256( TEMP 254 )").
+instruction("List_Print", 24, "MOVE TEMP 240 TEMP 257").
+instruction("List_Print", 25, "MOVE TEMP 258 TEMP 239").
+instruction("List_Print", 26, "HLOAD TEMP 259 TEMP 258 0").
+instruction("List_Print", 27, "HLOAD TEMP 260 TEMP 259 28").
+instruction("List_Print", 28, "MOVE TEMP 261 CALL TEMP 260( TEMP 258 )").
+instruction("List_Print", 29, "MOVE TEMP 242 TEMP 261").
+instruction("List_Print", 30, "JUMP L32").
+instruction("List_Print", 31, "L33     NOOP").
+instruction("List_Print", 32, "MOVE TEMP 262 1").
+instruction("List_Print", 33, "RETURN TEMP 262").
+instruction("LL_Start",  1, "MOVE TEMP 264 HALLOCATE 16").
+instruction("LL_Start",  2, "MOVE TEMP 265 ListvTable").
+instruction("LL_Start",  3, "HLOAD TEMP 266 TEMP 265 0").
+instruction("LL_Start",  4, "MOVE TEMP 267 4").
+instruction("LL_Start",  5, "L34     NOOP").
+instruction("LL_Start",  6, "MOVE TEMP 268 16").
+instruction("LL_Start",  7, "MOVE TEMP 269 LT TEMP 267 TEMP 268").
+instruction("LL_Start",  8, "CJUMP TEMP 269 L35").
+instruction("LL_Start",  9, "MOVE TEMP 270 PLUS TEMP 264 TEMP 267").
+instruction("LL_Start", 10, "MOVE TEMP 271 0").
+instruction("LL_Start", 11, "HSTORE TEMP 270 0 TEMP 271").
+instruction("LL_Start", 12, "MOVE TEMP 267 PLUS TEMP 267 4").
+instruction("LL_Start", 13, "JUMP L34").
+instruction("LL_Start", 14, "L35     NOOP").
+instruction("LL_Start", 15, "HSTORE TEMP 264 0 TEMP 266").
+instruction("LL_Start", 16, "MOVE TEMP 263 TEMP 264").
+instruction("LL_Start", 17, "MOVE TEMP 273 TEMP 263").
+instruction("LL_Start", 18, "HLOAD TEMP 274 TEMP 273 0").
+instruction("LL_Start", 19, "HLOAD TEMP 275 TEMP 274 0").
+instruction("LL_Start", 20, "MOVE TEMP 276 CALL TEMP 275( TEMP 273 )").
+instruction("LL_Start", 21, "MOVE TEMP 272 TEMP 276").
+instruction("LL_Start", 22, "MOVE TEMP 277 TEMP 263").
+instruction("LL_Start", 23, "MOVE TEMP 278 TEMP 277").
+instruction("LL_Start", 24, "HLOAD TEMP 279 TEMP 278 0").
+instruction("LL_Start", 25, "HLOAD TEMP 280 TEMP 279 0").
+instruction("LL_Start", 26, "MOVE TEMP 281 CALL TEMP 280( TEMP 278 )").
+instruction("LL_Start", 27, "MOVE TEMP 272 TEMP 281").
+instruction("LL_Start", 28, "MOVE TEMP 282 TEMP 277").
+instruction("LL_Start", 29, "HLOAD TEMP 283 TEMP 282 0").
+instruction("LL_Start", 30, "HLOAD TEMP 284 TEMP 283 36").
+instruction("LL_Start", 31, "MOVE TEMP 285 CALL TEMP 284( TEMP 282 )").
+instruction("LL_Start", 32, "MOVE TEMP 272 TEMP 285").
+instruction("LL_Start", 33, "MOVE TEMP 287 HALLOCATE 16").
+instruction("LL_Start", 34, "MOVE TEMP 288 ElementvTable").
+instruction("LL_Start", 35, "HLOAD TEMP 289 TEMP 288 0").
+instruction("LL_Start", 36, "MOVE TEMP 290 4").
+instruction("LL_Start", 37, "L36     NOOP").
+instruction("LL_Start", 38, "MOVE TEMP 291 16").
+instruction("LL_Start", 39, "MOVE TEMP 292 LT TEMP 290 TEMP 291").
+instruction("LL_Start", 40, "CJUMP TEMP 292 L37").
+instruction("LL_Start", 41, "MOVE TEMP 293 PLUS TEMP 287 TEMP 290").
+instruction("LL_Start", 42, "MOVE TEMP 294 0").
+instruction("LL_Start", 43, "HSTORE TEMP 293 0 TEMP 294").
+instruction("LL_Start", 44, "MOVE TEMP 290 PLUS TEMP 290 4").
+instruction("LL_Start", 45, "JUMP L36").
+instruction("LL_Start", 46, "L37     NOOP").
+instruction("LL_Start", 47, "HSTORE TEMP 287 0 TEMP 289").
+instruction("LL_Start", 48, "MOVE TEMP 286 TEMP 287").
+instruction("LL_Start", 49, "MOVE TEMP 295 TEMP 286").
+instruction("LL_Start", 50, "HLOAD TEMP 296 TEMP 295 0").
+instruction("LL_Start", 51, "HLOAD TEMP 297 TEMP 296 0").
+instruction("LL_Start", 52, "MOVE TEMP 298 25").
+instruction("LL_Start", 53, "MOVE TEMP 299 37000").
+instruction("LL_Start", 54, "MOVE TEMP 300 0").
+instruction("LL_Start", 55, "MOVE TEMP 301 CALL TEMP 297( TEMP 295 TEMP 298 TEMP 299 TEMP 300 )").
+instruction("LL_Start", 56, "MOVE TEMP 272 TEMP 301").
+instruction("LL_Start", 57, "MOVE TEMP 302 TEMP 277").
+instruction("LL_Start", 58, "HLOAD TEMP 303 TEMP 302 0").
+instruction("LL_Start", 59, "HLOAD TEMP 304 TEMP 303 8").
+instruction("LL_Start", 60, "MOVE TEMP 305 CALL TEMP 304( TEMP 302 TEMP 286 )").
+instruction("LL_Start", 61, "MOVE TEMP 277 TEMP 305").
+instruction("LL_Start", 62, "MOVE TEMP 306 TEMP 277").
+instruction("LL_Start", 63, "HLOAD TEMP 307 TEMP 306 0").
+instruction("LL_Start", 64, "HLOAD TEMP 308 TEMP 307 36").
+instruction("LL_Start", 65, "MOVE TEMP 309 CALL TEMP 308( TEMP 306 )").
+instruction("LL_Start", 66, "MOVE TEMP 272 TEMP 309").
+instruction("LL_Start", 67, "MOVE TEMP 310 10000000").
+instruction("LL_Start", 68, "PRINT TEMP 310").
+instruction("LL_Start", 69, "MOVE TEMP 311 HALLOCATE 16").
+instruction("LL_Start", 70, "MOVE TEMP 312 ElementvTable").
+instruction("LL_Start", 71, "HLOAD TEMP 313 TEMP 312 0").
+instruction("LL_Start", 72, "MOVE TEMP 314 4").
+instruction("LL_Start", 73, "L38     NOOP").
+instruction("LL_Start", 74, "MOVE TEMP 315 16").
+instruction("LL_Start", 75, "MOVE TEMP 316 LT TEMP 314 TEMP 315").
+instruction("LL_Start", 76, "CJUMP TEMP 316 L39").
+instruction("LL_Start", 77, "MOVE TEMP 317 PLUS TEMP 311 TEMP 314").
+instruction("LL_Start", 78, "MOVE TEMP 318 0").
+instruction("LL_Start", 79, "HSTORE TEMP 317 0 TEMP 318").
+instruction("LL_Start", 80, "MOVE TEMP 314 PLUS TEMP 314 4").
+instruction("LL_Start", 81, "JUMP L38").
+instruction("LL_Start", 82, "L39     NOOP").
+instruction("LL_Start", 83, "HSTORE TEMP 311 0 TEMP 313").
+instruction("LL_Start", 84, "MOVE TEMP 286 TEMP 311").
+instruction("LL_Start", 85, "MOVE TEMP 319 TEMP 286").
+instruction("LL_Start", 86, "HLOAD TEMP 320 TEMP 319 0").
+instruction("LL_Start", 87, "HLOAD TEMP 321 TEMP 320 0").
+instruction("LL_Start", 88, "MOVE TEMP 322 39").
+instruction("LL_Start", 89, "MOVE TEMP 323 42000").
+instruction("LL_Start", 90, "MOVE TEMP 324 1").
+instruction("LL_Start", 91, "MOVE TEMP 325 CALL TEMP 321( TEMP 319 TEMP 322 TEMP 323 TEMP 324 )").
+instruction("LL_Start", 92, "MOVE TEMP 272 TEMP 325").
+instruction("LL_Start", 93, "MOVE TEMP 326 TEMP 286").
+instruction("LL_Start", 94, "MOVE TEMP 327 TEMP 277").
+instruction("LL_Start", 95, "HLOAD TEMP 328 TEMP 327 0").
+instruction("LL_Start", 96, "HLOAD TEMP 329 TEMP 328 8").
+instruction("LL_Start", 97, "MOVE TEMP 330 CALL TEMP 329( TEMP 327 TEMP 286 )").
+instruction("LL_Start", 98, "MOVE TEMP 277 TEMP 330").
+instruction("LL_Start", 99, "MOVE TEMP 331 TEMP 277").
+instruction("LL_Start", 100, "HLOAD TEMP 332 TEMP 331 0").
+instruction("LL_Start", 101, "HLOAD TEMP 333 TEMP 332 36").
+instruction("LL_Start", 102, "MOVE TEMP 334 CALL TEMP 333( TEMP 331 )").
+instruction("LL_Start", 103, "MOVE TEMP 272 TEMP 334").
+instruction("LL_Start", 104, "MOVE TEMP 335 10000000").
+instruction("LL_Start", 105, "PRINT TEMP 335").
+instruction("LL_Start", 106, "MOVE TEMP 336 HALLOCATE 16").
+instruction("LL_Start", 107, "MOVE TEMP 337 ElementvTable").
+instruction("LL_Start", 108, "HLOAD TEMP 338 TEMP 337 0").
+instruction("LL_Start", 109, "MOVE TEMP 339 4").
+instruction("LL_Start", 110, "L40     NOOP").
+instruction("LL_Start", 111, "MOVE TEMP 340 16").
+instruction("LL_Start", 112, "MOVE TEMP 341 LT TEMP 339 TEMP 340").
+instruction("LL_Start", 113, "CJUMP TEMP 341 L41").
+instruction("LL_Start", 114, "MOVE TEMP 342 PLUS TEMP 336 TEMP 339").
+instruction("LL_Start", 115, "MOVE TEMP 343 0").
+instruction("LL_Start", 116, "HSTORE TEMP 342 0 TEMP 343").
+instruction("LL_Start", 117, "MOVE TEMP 339 PLUS TEMP 339 4").
+instruction("LL_Start", 118, "JUMP L40").
+instruction("LL_Start", 119, "L41     NOOP").
+instruction("LL_Start", 120, "HSTORE TEMP 336 0 TEMP 338").
+instruction("LL_Start", 121, "MOVE TEMP 286 TEMP 336").
+instruction("LL_Start", 122, "MOVE TEMP 344 TEMP 286").
+instruction("LL_Start", 123, "HLOAD TEMP 345 TEMP 344 0").
+instruction("LL_Start", 124, "HLOAD TEMP 346 TEMP 345 0").
+instruction("LL_Start", 125, "MOVE TEMP 347 22").
+instruction("LL_Start", 126, "MOVE TEMP 348 34000").
+instruction("LL_Start", 127, "MOVE TEMP 349 0").
+instruction("LL_Start", 128, "MOVE TEMP 350 CALL TEMP 346( TEMP 344 TEMP 347 TEMP 348 TEMP 349 )").
+instruction("LL_Start", 129, "MOVE TEMP 272 TEMP 350").
+instruction("LL_Start", 130, "MOVE TEMP 351 TEMP 277").
+instruction("LL_Start", 131, "HLOAD TEMP 352 TEMP 351 0").
+instruction("LL_Start", 132, "HLOAD TEMP 353 TEMP 352 8").
+instruction("LL_Start", 133, "MOVE TEMP 354 CALL TEMP 353( TEMP 351 TEMP 286 )").
+instruction("LL_Start", 134, "MOVE TEMP 277 TEMP 354").
+instruction("LL_Start", 135, "MOVE TEMP 355 TEMP 277").
+instruction("LL_Start", 136, "HLOAD TEMP 356 TEMP 355 0").
+instruction("LL_Start", 137, "HLOAD TEMP 357 TEMP 356 36").
+instruction("LL_Start", 138, "MOVE TEMP 358 CALL TEMP 357( TEMP 355 )").
+instruction("LL_Start", 139, "MOVE TEMP 272 TEMP 358").
+instruction("LL_Start", 140, "MOVE TEMP 360 HALLOCATE 16").
+instruction("LL_Start", 141, "MOVE TEMP 361 ElementvTable").
+instruction("LL_Start", 142, "HLOAD TEMP 362 TEMP 361 0").
+instruction("LL_Start", 143, "MOVE TEMP 363 4").
+instruction("LL_Start", 144, "L42     NOOP").
+instruction("LL_Start", 145, "MOVE TEMP 364 16").
+instruction("LL_Start", 146, "MOVE TEMP 365 LT TEMP 363 TEMP 364").
+instruction("LL_Start", 147, "CJUMP TEMP 365 L43").
+instruction("LL_Start", 148, "MOVE TEMP 366 PLUS TEMP 360 TEMP 363").
+instruction("LL_Start", 149, "MOVE TEMP 367 0").
+instruction("LL_Start", 150, "HSTORE TEMP 366 0 TEMP 367").
+instruction("LL_Start", 151, "MOVE TEMP 363 PLUS TEMP 363 4").
+instruction("LL_Start", 152, "JUMP L42").
+instruction("LL_Start", 153, "L43     NOOP").
+instruction("LL_Start", 154, "HSTORE TEMP 360 0 TEMP 362").
+instruction("LL_Start", 155, "MOVE TEMP 359 TEMP 360").
+instruction("LL_Start", 156, "MOVE TEMP 368 TEMP 359").
+instruction("LL_Start", 157, "HLOAD TEMP 369 TEMP 368 0").
+instruction("LL_Start", 158, "HLOAD TEMP 370 TEMP 369 0").
+instruction("LL_Start", 159, "MOVE TEMP 371 27").
+instruction("LL_Start", 160, "MOVE TEMP 372 34000").
+instruction("LL_Start", 161, "MOVE TEMP 373 0").
+instruction("LL_Start", 162, "MOVE TEMP 374 CALL TEMP 370( TEMP 368 TEMP 371 TEMP 372 TEMP 373 )").
+instruction("LL_Start", 163, "MOVE TEMP 272 TEMP 374").
+instruction("LL_Start", 164, "MOVE TEMP 375 TEMP 277").
+instruction("LL_Start", 165, "HLOAD TEMP 376 TEMP 375 0").
+instruction("LL_Start", 166, "HLOAD TEMP 377 TEMP 376 20").
+instruction("LL_Start", 167, "MOVE TEMP 378 CALL TEMP 377( TEMP 375 TEMP 326 )").
+instruction("LL_Start", 168, "PRINT TEMP 378").
+instruction("LL_Start", 169, "MOVE TEMP 379 TEMP 277").
+instruction("LL_Start", 170, "HLOAD TEMP 380 TEMP 379 0").
+instruction("LL_Start", 171, "HLOAD TEMP 381 TEMP 380 20").
+instruction("LL_Start", 172, "MOVE TEMP 382 CALL TEMP 381( TEMP 379 TEMP 359 )").
+instruction("LL_Start", 173, "PRINT TEMP 382").
+instruction("LL_Start", 174, "MOVE TEMP 383 10000000").
+instruction("LL_Start", 175, "PRINT TEMP 383").
+instruction("LL_Start", 176, "MOVE TEMP 384 HALLOCATE 16").
+instruction("LL_Start", 177, "MOVE TEMP 385 ElementvTable").
+instruction("LL_Start", 178, "HLOAD TEMP 386 TEMP 385 0").
+instruction("LL_Start", 179, "MOVE TEMP 387 4").
+instruction("LL_Start", 180, "L44     NOOP").
+instruction("LL_Start", 181, "MOVE TEMP 388 16").
+instruction("LL_Start", 182, "MOVE TEMP 389 LT TEMP 387 TEMP 388").
+instruction("LL_Start", 183, "CJUMP TEMP 389 L45").
+instruction("LL_Start", 184, "MOVE TEMP 390 PLUS TEMP 384 TEMP 387").
+instruction("LL_Start", 185, "MOVE TEMP 391 0").
+instruction("LL_Start", 186, "HSTORE TEMP 390 0 TEMP 391").
+instruction("LL_Start", 187, "MOVE TEMP 387 PLUS TEMP 387 4").
+instruction("LL_Start", 188, "JUMP L44").
+instruction("LL_Start", 189, "L45     NOOP").
+instruction("LL_Start", 190, "HSTORE TEMP 384 0 TEMP 386").
+instruction("LL_Start", 191, "MOVE TEMP 286 TEMP 384").
+instruction("LL_Start", 192, "MOVE TEMP 392 TEMP 286").
+instruction("LL_Start", 193, "HLOAD TEMP 393 TEMP 392 0").
+instruction("LL_Start", 194, "HLOAD TEMP 394 TEMP 393 0").
+instruction("LL_Start", 195, "MOVE TEMP 395 28").
+instruction("LL_Start", 196, "MOVE TEMP 396 35000").
+instruction("LL_Start", 197, "MOVE TEMP 397 0").
+instruction("LL_Start", 198, "MOVE TEMP 398 CALL TEMP 394( TEMP 392 TEMP 395 TEMP 396 TEMP 397 )").
+instruction("LL_Start", 199, "MOVE TEMP 272 TEMP 398").
+instruction("LL_Start", 200, "MOVE TEMP 399 TEMP 277").
+instruction("LL_Start", 201, "HLOAD TEMP 400 TEMP 399 0").
+instruction("LL_Start", 202, "HLOAD TEMP 401 TEMP 400 8").
+instruction("LL_Start", 203, "MOVE TEMP 402 CALL TEMP 401( TEMP 399 TEMP 286 )").
+instruction("LL_Start", 204, "MOVE TEMP 277 TEMP 402").
+instruction("LL_Start", 205, "MOVE TEMP 403 TEMP 277").
+instruction("LL_Start", 206, "HLOAD TEMP 404 TEMP 403 0").
+instruction("LL_Start", 207, "HLOAD TEMP 405 TEMP 404 36").
+instruction("LL_Start", 208, "MOVE TEMP 406 CALL TEMP 405( TEMP 403 )").
+instruction("LL_Start", 209, "MOVE TEMP 272 TEMP 406").
+instruction("LL_Start", 210, "MOVE TEMP 407 2220000").
+instruction("LL_Start", 211, "PRINT TEMP 407").
+instruction("LL_Start", 212, "MOVE TEMP 408 TEMP 277").
+instruction("LL_Start", 213, "HLOAD TEMP 409 TEMP 408 0").
+instruction("LL_Start", 214, "HLOAD TEMP 410 TEMP 409 16").
+instruction("LL_Start", 215, "MOVE TEMP 411 CALL TEMP 410( TEMP 408 TEMP 326 )").
+instruction("LL_Start", 216, "MOVE TEMP 277 TEMP 411").
+instruction("LL_Start", 217, "MOVE TEMP 412 TEMP 277").
+instruction("LL_Start", 218, "HLOAD TEMP 413 TEMP 412 0").
+instruction("LL_Start", 219, "HLOAD TEMP 414 TEMP 413 36").
+instruction("LL_Start", 220, "MOVE TEMP 415 CALL TEMP 414( TEMP 412 )").
+instruction("LL_Start", 221, "MOVE TEMP 272 TEMP 415").
+instruction("LL_Start", 222, "MOVE TEMP 416 33300000").
+instruction("LL_Start", 223, "PRINT TEMP 416").
+instruction("LL_Start", 224, "MOVE TEMP 417 TEMP 277").
+instruction("LL_Start", 225, "HLOAD TEMP 418 TEMP 417 0").
+instruction("LL_Start", 226, "HLOAD TEMP 419 TEMP 418 16").
+instruction("LL_Start", 227, "MOVE TEMP 420 CALL TEMP 419( TEMP 417 TEMP 286 )").
+instruction("LL_Start", 228, "MOVE TEMP 277 TEMP 420").
+instruction("LL_Start", 229, "MOVE TEMP 421 TEMP 277").
+instruction("LL_Start", 230, "HLOAD TEMP 422 TEMP 421 0").
+instruction("LL_Start", 231, "HLOAD TEMP 423 TEMP 422 36").
+instruction("LL_Start", 232, "MOVE TEMP 424 CALL TEMP 423( TEMP 421 )").
+instruction("LL_Start", 233, "MOVE TEMP 272 TEMP 424").
+instruction("LL_Start", 234, "MOVE TEMP 425 44440000").
+instruction("LL_Start", 235, "PRINT TEMP 425").
+instruction("LL_Start", 236, "MOVE TEMP 426 0").
+instruction("LL_Start", 237, "RETURN TEMP 426").

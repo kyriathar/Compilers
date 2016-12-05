@@ -1,0 +1,3 @@
+varMove("MAIN", 23, "TEMP 38", "TEMP 30").
+varMove("MT4_Start", 7, "TEMP 49", "TEMP 0").
+varMove("MT4_Start", 11, "TEMP 48", "TEMP 52").
